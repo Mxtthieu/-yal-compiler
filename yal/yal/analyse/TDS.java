@@ -27,6 +27,9 @@ public class TDS {
     }
 
     public Symbol identifier(Entree e){
+        if(!tab.containsKey(e)){
+            throw new AnalyseSyntaxiqueException("Non déclaré");
+        }
         return tab.get(e);
     }
 
