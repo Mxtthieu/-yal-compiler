@@ -19,8 +19,8 @@ public class BlocDInstructions extends ArbreAbstrait {
     protected static String debut = "\n.text\n"+
             "\nmain :\n";
     protected static String fin = "end :\n"+
-            "   li $v0, 10\n" +
-            "   syscall\n";
+            "    li $v0, 10\n" +
+            "    syscall\n";
 
     public BlocDInstructions(int n) {
         super(n) ;
