@@ -44,9 +44,14 @@ commentaire = [/][/].*
 "programme"            { return symbol(CodesLexicaux.PROGRAMME); }
 "debut"                { return symbol(CodesLexicaux.DEBUT); }
 "fin"              	   { return symbol(CodesLexicaux.FIN); }
+
 "entier"               { return symbol(CodesLexicaux.TYPE); }
+
 "ecrire"               { return symbol(CodesLexicaux.ECRIRE); }
 "lire"                 { return symbol(CodesLexicaux.LIRE); }
+
+"="                    { return symbol(CodesLexicaux.EGAL); }
+
 ";"                    { return symbol(CodesLexicaux.POINTVIRGULE); }
 
 {csteE}      	       { return symbol(CodesLexicaux.CSTENTIERE, yytext()); }

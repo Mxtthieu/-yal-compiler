@@ -24,11 +24,15 @@ public class Lire extends Instruction{
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
-        sb.append("     #Lecture d'un entier\n");
-        sb.append("     li $v0, 5 # $v0 <- 5 : Code lecture entier \n");
-        sb.append("     syscall\n");
-        sb.append("     #Affectation");
-        sb.append("     sw $v0, "+dep+"($s7)\n\n");
+        sb.append("    #Lecture d'un entier\n");
+        sb.append("    li $v0, 5 # $v0 <- 5 : Code lecture entier \n");
+        sb.append("    syscall\n");
+        sb.append("    #Affectation\n");
+        sb.append("    sw $v0, "+dep+"($s7)\n\n");
+        sb.append("    #Affichage du saut de ligne\n");
+        sb.append("    li $v0, 4 # $v0 <- 4 : Code du print str\n");
+        sb.append("    la $a0, sautLigne\n");
+        sb.append("    syscall\n");
         return sb.toString();
     }
 }

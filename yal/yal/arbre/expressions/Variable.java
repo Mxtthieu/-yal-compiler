@@ -4,13 +4,14 @@ import yal.analyse.TDS;
 import yal.analyse.entre.EntreeVar;
 import yal.analyse.symbol.Symbole;
 
-public abstract class Variable extends Expression{
+public class Variable extends Expression{
 
     private String idf;
     private String type;
     private int dep;
-    public Variable(int n) {
+    public Variable(String s, int n) {
         super(n);
+        idf = s;
     }
 
     @Override
