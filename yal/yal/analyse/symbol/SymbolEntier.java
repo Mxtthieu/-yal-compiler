@@ -1,7 +1,13 @@
 package yal.analyse.symbol;
 
 public class SymbolEntier extends Symbol {
-    public SymbolEntier(String t) {
-        super(t);
+
+    public SymbolEntier() {
+        super();
+    }
+
+    @Override
+    public String getType() {
+        return "entier";
     }
 }

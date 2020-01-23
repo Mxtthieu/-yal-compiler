@@ -1,16 +1,20 @@
 package yal.analyse.symbol;
 
+import yal.analyse.TDS;
+
 public abstract class Symbol {
 
-    private String type;
     private int dep;
 
-    public Symbol(String t){
-            type = t;
-
+    public Symbol(){
+            dep = TDS.getInstance().TailleZoneVariable();
     }
 
+    public int getDep() {
+        return dep;
+    }
 
-
-
+    public String getType() {
+        return null;
+    }
 }
