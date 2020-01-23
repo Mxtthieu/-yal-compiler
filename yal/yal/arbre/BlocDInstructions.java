@@ -14,6 +14,13 @@ import java.util.ArrayList;
 public class BlocDInstructions extends ArbreAbstrait {
     
     protected ArrayList<ArbreAbstrait> programme ;
+    protected static String data = ".data\n\n" +
+            "sautLigne: .asciiz \"\\n\"\n";
+    protected static String debut = "\n.text\n"+
+            "\nmain :\n";
+    protected static String fin = "end :\n"+
+            "   li $v0, 10\n" +
+            "   syscall\n";
 
     public BlocDInstructions(int n) {
         super(n) ;
@@ -39,10 +46,13 @@ public class BlocDInstructions extends ArbreAbstrait {
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
+        sb.append(data);
+        sb.append(debut);
         for (ArbreAbstrait aa : programme) {
             sb.append(aa.toMIPS()) ;
             sb.append("\n");
         }
+        sb.append(fin);
         return sb.toString() ;
     }
 
