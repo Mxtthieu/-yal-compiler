@@ -1,8 +1,10 @@
 package yal.analyse.symbol;
 
-public class SymbolFonc extends Symbol {
-    public SymbolFonc() {
-        super();
+public class SymboleFonc extends Symbole {
+
+
+    public SymboleFonc(String t) {
+        super(t);
     }
 
     @Override

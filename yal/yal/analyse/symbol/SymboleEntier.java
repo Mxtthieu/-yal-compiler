@@ -1,9 +1,10 @@
 package yal.analyse.symbol;
 
-public class SymbolEntier extends Symbol {
+public class SymboleEntier extends Symbole {
 
-    public SymbolEntier() {
-        super();
+
+    public SymboleEntier(String t) {
+        super(t);
     }
 
     @Override

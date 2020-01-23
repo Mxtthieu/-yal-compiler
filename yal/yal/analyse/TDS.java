@@ -1,7 +1,7 @@
 package yal.analyse;
 
 import yal.analyse.entre.Entree;
-import yal.analyse.symbol.Symbol;
+import yal.analyse.symbol.Symbole;
 import yal.exceptions.AnalyseSyntaxiqueException;
 
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class TDS {
 
     private static TDS instance = new TDS();
-    private HashMap<Entree, Symbol> tab;
+    private HashMap<Entree, Symbole> tab;
 
     private TDS(){
         tab = new HashMap<>();
@@ -19,14 +19,14 @@ public class TDS {
         return instance;
     }
 
-    public void ajouter(Entree e, Symbol s){
+    public void ajouter(Entree e, Symbole s){
         if(tab.containsKey(e)){
             throw new AnalyseSyntaxiqueException("Double déclaration");
         }
         tab.put(e,s);
     }
 
-    public Symbol identifier(Entree e){
+    public Symbole identifier(Entree e){
         if(!tab.containsKey(e)){
             throw new AnalyseSyntaxiqueException("Non déclaré");
         }

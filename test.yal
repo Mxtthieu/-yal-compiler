@@ -1,5 +1,10 @@
 programme test
 debut
-ecrire 3;
-ecrire 5;
+entier e ;
+entier a ;
+e = 3 ;
+a = 7 ;
+ecrire 3 ;
+ecrire 5 ;
+lire e ;
 fin

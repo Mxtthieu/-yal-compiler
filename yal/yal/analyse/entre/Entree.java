@@ -12,7 +12,7 @@ public abstract class Entree {
 
     @Override
     public String toString(){
-        return "Entree{ idf = '"+idf+"\'}";
+        return idf;
     }
 
     @Override
@@ -25,5 +25,10 @@ public abstract class Entree {
         }
         Entree entree = (Entree) o;
         return Objects.equals(idf, entree.idf);
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(idf);
     }
 }

@@ -1,8 +1,9 @@
 package yal.analyse.symbol;
 
-public class SymbolBool extends Symbol {
-    public SymbolBool() {
-        super();
+public class SymboleBool extends Symbole {
+
+    public SymboleBool(String t) {
+        super(t);
     }
 
     @Override

@@ -5,6 +5,9 @@ import yal.arbre.* ;
 import yal.arbre.expressions.* ;
 import yal.arbre.instructions.* ;
 import yal.exceptions.AnalyseSyntaxiqueException;
+import yal.analyse.symbol.*;
+import yal.analyse.entre.*;
+
 
 import java_cup.runtime.*;
 
@@ -56,19 +59,25 @@ parser code {:
    
 /* Terminals (tokens returned by the scanner).  */
 
-terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE ;
-terminal String    IDF, CSTENTIERE ;
+terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, EGAL, LIRE ;
+terminal String    IDF, CSTENTIERE, TYPE ;
    
 /* Non terminals used in the grammar section.  */
 
-non terminal ArbreAbstrait PROG, LINST, INST ;
+non terminal ArbreAbstrait PROG ;
+non terminal BlocDInstructions LINST, LDECL ;
 non terminal Expression EXP ;
+non terminal Instruction AFFECTATION, ECRITURE, DECL, DECL_VAR, INST, LECTURE ;
 
 /* ----------------------------Grammar Section-------------------- */
  
 start with PROG ;
 
 PROG    ::=     PROGRAMME  IDF  DEBUT  LINST:li  FIN
+                {: RESULT = li ; :}
+
+        |
+                PROGRAMME  IDF  DEBUT  LDECL LINST:li  FIN
                 {: RESULT = li ; :}
                 ;
 
@@ -82,10 +91,52 @@ LINST   ::=     LINST:li  INST:i
                    RESULT = b ; :}
                 ;
 
-INST    ::=     ECRIRE EXP:e POINTVIRGULE
+INST    ::=     AFFECTATION:a
+                {: RESULT = a ; :}
+        |
+                ECRITURE:e
+                {: RESULT = e ; :}
+        |
+                LECTURE:l
+                {: RESULT = l ; :}
+                ;
+
+
+LDECL   ::=     LDECL:ld  DECL:d
+                {: if (d !=null) { ld.ajouter(d) ;}
+                   RESULT = ld ; :}
+        |
+                DECL:d
+                {: BlocDInstructions ld = new BlocDInstructions(dleft + 1) ;
+                   if (d !=null) { ld.ajouter(d) ;}
+                   RESULT = ld ; :}
+                ;
+
+DECL    ::=     DECL_VAR:dv
+                {: RESULT = dv ; :}
+                ;
+
+DECL_VAR ::=    TYPE:t IDF:i POINTVIRGULE
+                {: EntreeVar e = new EntreeVar(i);
+                   Symbole s = new SymboleEntier("entier");
+                   TDS.getInstance().ajouter(e, s) ; :}
+                ;
+                   
+AFFECTATION ::= IDF:i EGAL EXP:e POINTVIRGULE
+                {: RESULT = new Affectation(i, e) ; :}
+                ;
+
+ECRITURE     ::= ECRIRE EXP:e POINTVIRGULE
                 {: RESULT = new Ecrire(e, eleft + 1) ; :}
+                ;
+
+LECTURE     ::= LIRE IDF:i POINTVIRGULE
+                {: RESULT = new Lire(i, ileft + 1) ; :}
                 ;
     
 EXP    ::=     CSTENTIERE:c
                 {: RESULT = new ConstanteEntiere(c, cleft + 1) ; :}
-                ;
+        |
+               IDF:i
+               {: RESULT = new Variable(i, ileft + 1); :}
+               ;
