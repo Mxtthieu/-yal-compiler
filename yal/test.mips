@@ -1,0 +1,6 @@
+#Ecrire un entier 
+li $v0, 3
+move $a0, $v0
+li $v0, 1 # $v0 <- 1 : Code du print entier
+syscall
+
