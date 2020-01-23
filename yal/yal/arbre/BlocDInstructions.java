@@ -57,9 +57,10 @@ public class BlocDInstructions extends ArbreAbstrait {
         if (taille!=0) {
             sb.append("    #Initialisation des variables à 0 : \n");
             for (int i = 0; i < -taille; i += 4) {
-                sb.append("    sw $zero, " + -i + "($s7)\n\n");
+                sb.append("    sw $zero, " + -i + "($s7)\n");
             }
         }
+        sb.append("\n");
         for (ArbreAbstrait aa : programme) {
             sb.append(aa.toMIPS()) ;
             sb.append("\n");

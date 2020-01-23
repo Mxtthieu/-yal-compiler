@@ -1,6 +1,9 @@
 programme test
 debut
 entier e ;
+entier a ;
+// qsdfjhskdjfhkjsdf
+e = 5 ;
 ecrire 5 ;
 lire e ;
 fin

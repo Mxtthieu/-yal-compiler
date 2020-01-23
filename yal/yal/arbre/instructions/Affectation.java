@@ -34,8 +34,9 @@ public class Affectation extends Instruction{
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
+        sb.append("    #Affectation de "+ exp.toString() + " à "+ idf + "\n");
         sb.append(exp.toMIPS());
-        sb.append(" sw $v0, "+dep+"($s7)\n\n");
+        sb.append("    sw $v0, "+dep+"($s7)\n\n");
         return sb.toString();
     }
 }
