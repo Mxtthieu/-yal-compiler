@@ -34,6 +34,6 @@ public class TDS {
     }
 
     public int TailleZoneVariable(){
-        return tab.size()*4;
+        return -(tab.size()*4);
     }
 }
