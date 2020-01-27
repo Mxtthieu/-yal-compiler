@@ -1,9 +1,6 @@
-programme test
+programme idf
 debut
-entier e ;
-entier a ;
-// qsdfjhskdjfhkjsdf
-e = 5 ;
-ecrire 5 ;
-lire e ;
+
+entier a;
+
 fin

@@ -21,7 +21,7 @@ public class TDS {
 
     public void ajouter(Entree e, Symbole s){
         if(tab.containsKey(e)){
-            throw new AnalyseSyntaxiqueException("Double déclaration");
+            throw new AnalyseSyntaxiqueException("Double déclaration de " + e.toString());
         }
         tab.put(e,s);
     }

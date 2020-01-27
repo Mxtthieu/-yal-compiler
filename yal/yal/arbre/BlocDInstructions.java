@@ -53,8 +53,9 @@ public class BlocDInstructions extends ArbreAbstrait {
         sb.append(debut);
         sb.append("    move $s7, $sp\n");
         sb.append("    #On réserve la place pour "+taille/-4+" variables\n");
-        sb.append("    addi $sp, $sp, "+taille+"\n\n");
+        sb.append("    addi $sp, $sp, "+taille+"\n");
         if (taille!=0) {
+            sb.append("\n");
             sb.append("    #Initialisation des variables à 0 : \n");
             for (int i = 0; i < -taille; i += 4) {
                 sb.append("    sw $zero, " + -i + "($s7)\n");
