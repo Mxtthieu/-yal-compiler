@@ -18,7 +18,7 @@ public class Egalite extends Binaire {
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
-        sb.append("#Egalite ");
+        sb.append("#Egalite\n");
         sb.append(super.toMIPS());
         sb.append("    seq $v0, $t8, $v0\n");
         return sb.toString();

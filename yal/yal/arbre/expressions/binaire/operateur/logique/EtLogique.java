@@ -11,7 +11,7 @@ public class EtLogique extends Logique {
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
-        sb.append("#Et logique");
+        sb.append("#Et logique\n");
         sb.append(super.toMIPS());
         sb.append("    and $v0, $t8, $v0\n");
         return sb.toString();

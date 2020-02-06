@@ -29,7 +29,7 @@ public class Inferieur extends Binaire {
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
-        sb.append("#Inferieure");
+        sb.append("#Inferieure\n");
         sb.append(super.toMIPS());
         sb.append("    slt $v0, $t8, $v0\n");
         return sb.toString();
