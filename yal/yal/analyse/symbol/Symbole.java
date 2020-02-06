@@ -5,10 +5,9 @@ import yal.analyse.TDS;
 public abstract class Symbole {
 
     private int dep;
-    private String type;
 
-    public Symbole(String t){
-        type = t;
+
+    public Symbole(){
         dep = TDS.getInstance().TailleZoneVariable();
     }
 
@@ -17,6 +16,7 @@ public abstract class Symbole {
     }
 
     public String getType() {
-        return type;
+        return null;
     }
+
 }

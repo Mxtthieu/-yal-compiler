@@ -3,7 +3,7 @@ package yal.analyse.symbol;
 public class SymboleBool extends Symbole {
 
     public SymboleBool(String t) {
-        super(t);
+        super();
     }
 
     @Override

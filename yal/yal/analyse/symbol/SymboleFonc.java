@@ -4,7 +4,7 @@ public class SymboleFonc extends Symbole {
 
 
     public SymboleFonc(String t) {
-        super(t);
+        super();
     }
 
     @Override
