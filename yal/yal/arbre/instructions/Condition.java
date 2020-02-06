@@ -42,6 +42,7 @@ public class Condition extends Instruction{
 
     @Override
     public void verifier() {
+        exp.verifier();
         if (!this.exp.getType().equals("bool")){
             StringBuilder sb = new StringBuilder();
             sb.append("Erreur de type : L'expression conditionnelle n'est pas booléenne");

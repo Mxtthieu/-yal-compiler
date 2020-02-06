@@ -32,7 +32,7 @@ public class Ecrire extends Instruction {
             res.append("finbool"+ count +" :\n");
             res.append("    li $v0, 4 # $v0 <- 4 : Code du print str\n");
             res.append("    la $a0, sautLigne\n");
-            res.append("    syscall\n");
+            res.append("    syscall\n\n");
         } else {
             res.append("    #Ecrire une expression booleenne\n");
             res.append(exp.toMIPS());
@@ -40,9 +40,11 @@ public class Ecrire extends Instruction {
             res.append("    li $v0, 1 # $v0 <- 1 : Code du print entier\n");
             res.append("    syscall\n\n");
             res.append("    #Affichage du saut de ligne\n");
+            res.append("    li $v0, 4\n");
+            res.append("    syscall\n");
             res.append("    li $v0, 4 # $v0 <- 4 : Code du print str\n");
             res.append("    la $a0, sautLigne\n");
-            res.append("    syscall\n");
+            res.append("    syscall\n\n");
         }
         return res.toString();
     }
