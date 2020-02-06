@@ -35,4 +35,8 @@ public class ArithmetiqueBinaire extends Binaire {
         return super.toMIPS();
     }
 
+    @Override
+    public String getType(){
+        return "entier";
+    }
 }

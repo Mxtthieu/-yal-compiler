@@ -9,7 +9,7 @@ public class Condition extends Instruction{
     private Expression exp;
     private BlocDInstructions ctrue;
     private BlocDInstructions cfalse;
-    private static int count;
+    private static int count = 0;
 
     public Condition(Expression e) {
         super(e.getNoLigne());

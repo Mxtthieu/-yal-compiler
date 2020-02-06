@@ -8,11 +8,6 @@ public class Plus extends ArithmetiqueBinaire {
     }
 
     @Override
-    public String getType(){
-        return "entier";
-    }
-
-    @Override
     public String toMIPS(){
         StringBuilder sb = new StringBuilder();
         sb.append("    add $v0, $v0, $t8\n");

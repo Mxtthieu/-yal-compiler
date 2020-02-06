@@ -9,11 +9,6 @@ public class Diviser extends ArithmetiqueBinaire {
     }
 
     @Override
-    public String getType() {
-        return "entier";
-    }
-
-    @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
         int hash = hashCode();

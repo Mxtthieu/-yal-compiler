@@ -7,7 +7,7 @@ import yal.exceptions.AnalyseSemantiqueException;
 public class Boucle extends Instruction {
     private Expression exp;
     private BlocDInstructions bInst;
-    private static int count;
+    private static int count = 0;
 
     protected Boucle(Expression e, BlocDInstructions b) {
         super(e.getNoLigne());
