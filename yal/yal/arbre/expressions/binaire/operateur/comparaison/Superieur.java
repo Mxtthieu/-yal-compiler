@@ -7,7 +7,7 @@ public class Superieur extends Comparaison {
     private Expression gauche;
     private Expression droite;
 
-    protected Superieur (Expression exp1, Expression exp2) {
+    public Superieur (Expression exp1, Expression exp2) {
         super(exp1, exp2);
         gauche = exp1;
         droite = exp2;

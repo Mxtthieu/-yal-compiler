@@ -9,7 +9,7 @@ public class Comparaison extends Binaire {
     private Expression gauche;
     private Expression droite;
 
-    protected Comparaison (Expression exp1, Expression exp2) {
+    public Comparaison (Expression exp1, Expression exp2) {
         super(exp1, exp2);
         gauche = exp1;
         droite = exp2;

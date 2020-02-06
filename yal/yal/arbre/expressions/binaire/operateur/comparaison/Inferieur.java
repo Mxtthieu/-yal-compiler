@@ -9,7 +9,7 @@ public class Inferieur extends Binaire {
     private Expression gauche;
     private Expression droite;
 
-    protected Inferieur(Expression exp1, Expression exp2) {
+    public Inferieur(Expression exp1, Expression exp2) {
         super(exp1, exp2);
         gauche = exp1;
         droite = exp2;

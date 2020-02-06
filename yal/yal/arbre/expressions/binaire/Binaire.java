@@ -4,10 +4,10 @@ import yal.arbre.expressions.Expression;
 
 public abstract class Binaire extends Expression {
 
-    protected Expression gauche;
-    protected Expression droite;
+    public Expression gauche;
+    public Expression droite;
 
-    protected Binaire(Expression exp1, Expression exp2) {
+    public Binaire(Expression exp1, Expression exp2) {
         super(exp1.getNoLigne());
         this.gauche = exp1;
         this.droite = exp2;

@@ -2,9 +2,9 @@ package yal.arbre.expressions;
 
 public abstract class Constante extends Expression {
 
-    protected String cste;
+    public String cste;
 
-    protected Constante(String texte, int n) {
+    public Constante(String texte, int n) {
         super(n);
         cste = texte;
     }

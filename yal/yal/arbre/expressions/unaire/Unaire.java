@@ -4,7 +4,7 @@ import yal.arbre.expressions.Expression;
 
 public abstract class Unaire extends Expression {
 
-    protected Expression exp;
+    private Expression exp;
 
     public Unaire(Expression exp){
         super(exp.getNoLigne());

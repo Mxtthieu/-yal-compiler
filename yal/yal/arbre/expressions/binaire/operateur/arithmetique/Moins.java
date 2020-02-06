@@ -3,7 +3,7 @@ package yal.arbre.expressions.binaire.operateur.arithmetique;
 import yal.arbre.expressions.Expression;
 
 public class Moins extends ArithmetiqueBinaire{
-    protected Moins(Expression exp1, Expression exp2) {
+    public Moins(Expression exp1, Expression exp2) {
         super(exp1, exp2);
     }
 

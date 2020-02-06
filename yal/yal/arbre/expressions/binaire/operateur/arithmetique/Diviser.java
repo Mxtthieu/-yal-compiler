@@ -6,7 +6,7 @@ public class Diviser extends ArithmetiqueBinaire {
 
     private static int count = 0;
 
-    protected Diviser(Expression exp1, Expression exp2) {
+    public Diviser(Expression exp1, Expression exp2) {
         super(exp1, exp2);
         count++;
     }

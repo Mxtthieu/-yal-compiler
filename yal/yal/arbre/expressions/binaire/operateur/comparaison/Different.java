@@ -9,7 +9,7 @@ public class Different extends Comparaison {
     private Expression gauche;
     private Expression droite;
 
-    protected Different(Expression exp1, Expression exp2) {
+    public Different(Expression exp1, Expression exp2) {
         super(exp1, exp2);
         gauche = exp1;
         droite = exp2;

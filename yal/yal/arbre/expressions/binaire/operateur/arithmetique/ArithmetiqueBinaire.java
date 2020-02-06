@@ -5,10 +5,10 @@ import yal.arbre.expressions.binaire.Binaire;
 import yal.exceptions.AnalyseSemantiqueException;
 
 public class ArithmetiqueBinaire extends Binaire {
-    protected Expression gauche;
-    protected Expression droite;
+    private Expression gauche;
+    private Expression droite;
 
-    protected ArithmetiqueBinaire(Expression exp1, Expression exp2) {
+    public ArithmetiqueBinaire(Expression exp1, Expression exp2) {
         super(exp1, exp2);
         gauche = exp1;
         droite = exp2;

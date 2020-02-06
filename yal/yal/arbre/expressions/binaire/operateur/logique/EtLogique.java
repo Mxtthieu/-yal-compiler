@@ -4,7 +4,7 @@ import yal.arbre.expressions.Expression;
 
 public class EtLogique extends Logique {
 
-    protected EtLogique(Expression exp1, Expression exp2) {
+    public EtLogique(Expression exp1, Expression exp2) {
         super(exp1, exp2);
     }
 
