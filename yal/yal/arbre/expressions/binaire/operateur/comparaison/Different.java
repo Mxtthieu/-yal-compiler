@@ -4,7 +4,7 @@ import yal.arbre.expressions.Expression;
 import yal.arbre.expressions.binaire.Binaire;
 import yal.exceptions.AnalyseSemantiqueException;
 
-public class Different extends Binaire {
+public class Different extends Comparaison {
 
     private Expression gauche;
     private Expression droite;
@@ -16,12 +16,14 @@ public class Different extends Binaire {
 
     }
 
+
     @Override
-    public void verifier() throws AnalyseSemantiqueException {
+    public String toMIPS() {
         StringBuilder sb = new StringBuilder();
-        if (!gauche.getType().equals(droite.getType())){
-            sb.append("Erreur de type : l'operande de droite est de type antier ");
-            throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());
-        }
+        sb.append("#Diffrence ");
+        sb.append(super.toMIPS());
+        sb.append("    sne $v0, $t8, $v0\n");
+        return sb.toString();
     }
+
 }

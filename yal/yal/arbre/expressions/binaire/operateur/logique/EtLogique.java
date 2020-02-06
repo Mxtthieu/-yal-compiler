@@ -8,7 +8,6 @@ public class EtLogique extends Logique {
         super(exp1, exp2);
     }
 
-
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
