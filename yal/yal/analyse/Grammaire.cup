@@ -60,14 +60,27 @@ parser code {:
 /* Terminals (tokens returned by the scanner).  */
 
 terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, EGAL, LIRE ;
+terminal Symbol    SI, ALORS, SINON, FINSI, TANTQUE, REPETER, FINTANTQUE ;
+terminal Symbol    PLUS, MOINS, MULTIPLICATION, DIVISION, PAROUVR, PARFER ;
+terminal Symbol    EGALITE, DIFFERENCE, INFERIEUR, SUPERIEUR, ET, OU, NON ;
 terminal String    IDF, CSTENTIERE, TYPE ;
    
 /* Non terminals used in the grammar section.  */
 
-non terminal ArbreAbstrait PROG ;
-non terminal BlocDInstructions LINST, LDECL ;
-non terminal Expression EXP ;
-non terminal Instruction AFFECTATION, ECRITURE, DECL, DECL_VAR, INST, LECTURE ;
+non terminal ArbreAbstrait PROG, LINST, INST ;
+non terminal Symbol LDECL, DECL, DECL_VAR ;
+non terminal Expression EXP, OPER ;
+non terminal Instruction AFFECTATION, ECRITURE, LECTURE, BOUCLE, CONDITION ;
+
+/* Precedences */
+precedence left OU;
+precedence left ET;
+precedence left NON;
+precedence left INFERIEUR, SUPERIEUR;
+precedence left EGALITE, DIFFERENCE;
+precedence left PLUS, MOINS;
+precedence left MULTIPLICATION, DIVISION;
+
 
 /* ----------------------------Grammar Section-------------------- */
  
@@ -94,13 +107,18 @@ LINST   ::=     LINST:li  INST:i
 INST    ::=     AFFECTATION:a
                 {: RESULT = a ; :}
         |
+                BOUCLE:b
+                {: RESULT = b ; :}
+        |
+                CONDITION:c
+                {: RESULT = c ; :}
+        |
                 ECRITURE:e
                 {: RESULT = e ; :}
         |
                 LECTURE:l
                 {: RESULT = l ; :}
                 ;
-
 
 LDECL   ::=     LDECL:ld  DECL:d
                 {: if (d !=null) { ld.ajouter(d) ;}
@@ -126,6 +144,23 @@ AFFECTATION ::= IDF:i EGAL EXP:e POINTVIRGULE
                 {: RESULT = new Affectation(i, e) ; :}
                 ;
 
+BOUCLE ::= TANTQUE EXP:e REPETER LINST:li FINTANTQUE
+                {: RESULT = new Boucle(e, li) ; :}
+                ;
+
+CONDITION ::= SI EXP:e ALORS FINSI
+                {: RESULT = new Condition(e) ; :}
+          |
+              SI EXP:e ALORS LINST:li FINSI
+                {: RESULT = new Condition(e, li, 0) ; :}
+                ;
+          |
+              SI EXP:e ALORS SINON LINST:li FINSI
+                {: RESULT = new Condition(e, li, 1) ; :}
+          |
+              SI EXP:e ALORS LINST:la SINON LINST:ls FINSI
+                {: RESULT = new Condition(e, la, ls) ; :}
+
 ECRITURE     ::= ECRIRE EXP:e POINTVIRGULE
                 {: RESULT = new Ecrire(e, eleft + 1) ; :}
                 ;
@@ -139,4 +174,43 @@ EXP    ::=     CSTENTIERE:c
         |
                IDF:i
                {: RESULT = new Variable(i, ileft + 1); :}
+        |
+               PAROUVR EXP:e PARFER
+               {: RESULT = e; :}
+        |
+               NON EXP:e
+               {: RESULT = new NonLogique(e); :}
+        |
+               MOINS EXP:e
+               {: RESULT = new Negation(e); :}
+        |
+               EXP:eg PLUS EXP:ed
+               {: RESULT = new Plus(eg, ed); :}
+        |
+               EXP:eg MOINS EXP:ed
+               {: RESULT = new Moins(eg, ed); :}
+        |
+               EXP:eg MULTIPLICATION EXP:ed
+               {: RESULT = new Multiplier(eg, ed); :}
+        |
+               EXP:eg DIVISION EXP:ed
+               {: RESULT = new Diviser(eg, ed); :}
+        |
+               EXP:eg EGALITE EXP:ed
+               {: RESULT = new Egalite(eg, ed); :}
+        |
+               EXP:eg SUPERIEUR EXP:ed
+               {: RESULT = new Superieur(eg, ed); :}
+        |
+               EXP:eg INFERIEUR EXP:ed
+               {: RESULT = new Inferieur(eg, ed); :}
+        |
+               EXP:eg DIFFERENCE EXP:ed
+               {: RESULT = new Different(eg, ed); :}
+        |
+               EXP:eg ET EXP:ed
+               {: RESULT = new EtLogique(eg, ed); :}
+        |
+               EXP:eg OU EXP:ed
+               {: RESULT = new OuLogique(eg, ed); :}
                ;
