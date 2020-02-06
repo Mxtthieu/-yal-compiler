@@ -28,8 +28,6 @@ public class ArithmetiqueBinaire extends Binaire {
             sb.append("Erreur de type : L'opérande de droite n'est pas entier");
             throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());
         }
-        throw new AnalyseSemantiqueException(getNoLigne(), sb.toString());
-
     }
 
     @Override

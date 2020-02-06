@@ -9,12 +9,14 @@ public class Condition extends Instruction{
     private Expression exp;
     private BlocDInstructions ctrue;
     private BlocDInstructions cfalse;
+    private static int count;
 
     public Condition(Expression e) {
         super(e.getNoLigne());
         exp = e;
         ctrue = new BlocDInstructions(noLigne +1);
         cfalse = new BlocDInstructions(noLigne +1);
+        count++;
     }
 
     public Condition(Expression e, BlocDInstructions b, int typeBloc) {
@@ -27,6 +29,7 @@ public class Condition extends Instruction{
             cfalse = b;
             ctrue = new BlocDInstructions(noLigne + 1);
         }
+        count++;
     }
 
     public Condition(Expression e, BlocDInstructions b, BlocDInstructions b2){
@@ -34,6 +37,7 @@ public class Condition extends Instruction{
         exp = e;
         ctrue = b;
         cfalse = b2;
+        count++;
     }
 
     @Override
@@ -51,16 +55,16 @@ public class Condition extends Instruction{
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
         sb.append("#Condition \n");
-        sb.append("si: \n");
+        sb.append("si"+ count +" :\n");
         sb.append(exp.toMIPS());
-        sb.append("    beqz $v0, sinon\n");
-        sb.append("    alors\n");
+        sb.append("    beqz $v0, sinon"+ count +" :\n");
+        sb.append("alors"+ count +" :\n");
         sb.append(ctrue.toMIPS());
-        sb.append("    j fin");
-        sb.append("    fin\n");
-        sb.append("    sinon\n");
+        sb.append("j fin"+ count +" :\n");
+        sb.append("fin"+ count +" :\n");
+        sb.append("sinon"+ count +" :\n");
         sb.append(cfalse.toMIPS());
-        sb.append("    fin\n");
+        sb.append("fin"+ count+ ":\n");
         return sb.toString();
     }
 }
