@@ -22,17 +22,17 @@ public abstract class Binaire extends Expression {
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
-        sb.append("# Partie de gauche \n");
+        sb.append("    # Partie de gauche \n");
         sb.append(gauche.toMIPS());
         sb.append("\n");
-        sb.append("# Empilement de la partie de gauche");
-        sb.append("sw $v0, 0($sp)\n");
-        sb.append("add $sp, $sp, -4\n\n");
-        sb.append("# Partie de droite");
+        sb.append("    # Empilement de la partie de gauche");
+        sb.append("    sw $v0, 0($sp)\n");
+        sb.append("    add $sp, $sp, -4\n\n");
+        sb.append("    # Partie de droite");
         sb.append(droite.toMIPS());
-        sb.append("# Depilement de la partie de gauche");
-        sb.append("add $sp, $sp, 4\n");
-        sb.append("lw $t8, 0($sp)\n\n");
+        sb.append("    # Depilement de la partie de gauche");
+        sb.append("    add $sp, $sp, 4\n");
+        sb.append("    lw $t8, 0($sp)\n\n");
         return sb.toString();
     }
 }

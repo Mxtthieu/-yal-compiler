@@ -7,6 +7,11 @@ import yal.arbre.instructions.* ;
 import yal.exceptions.AnalyseSyntaxiqueException;
 import yal.analyse.symbol.*;
 import yal.analyse.entre.*;
+import yal.arbre.expressions.binaire.operateur.logique.*;
+import yal.arbre.expressions.binaire.operateur.comparaison.*;
+import yal.arbre.expressions.binaire.operateur.arithmetique.*;
+import yal.arbre.expressions.unaire.*;
+
 
 
 import java_cup.runtime.*;
@@ -63,23 +68,22 @@ parser code {:
 terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, EGAL, LIRE ;
 terminal Symbol    SI, ALORS, SINON, FINSI, TANTQUE, REPETER, FINTANTQUE ;
 terminal Symbol    PLUS, MOINS, MULTIPLICATION, DIVISION, PAROUVR, PARFER ;
-terminal Symbol    EGALITE, DIFFERENCE, INFERIEUR, SUPERIEUR, ET, OU, NON ;
+terminal Symbol    EGALITE, DIFFERENT, INFERIEUR, SUPERIEUR, ET, OU, NON ;
 terminal String    IDF, CSTENTIERE, TYPE ;
    
 /* Non terminals used in the grammar section.  */
 
 non terminal ArbreAbstrait PROG;
-non terminal BlocDInstructions LINST ;
-non terminal Symbol LDECL, DECL, DECL_VAR ;
+non terminal BlocDInstructions LINST, LDECL;
 non terminal Expression EXP, OPER ;
-non terminal Instruction INST, AFFECTATION, ECRITURE, LECTURE, BOUCLE, CONDITION ;
+non terminal Instruction INST, DECL, DECL_VAR, AFFECTATION, ECRITURE, LECTURE, BOUCLE, CONDITION ;
 
 /* Precedences */
 precedence left OU;
 precedence left ET;
 precedence left NON;
 precedence left INFERIEUR, SUPERIEUR;
-precedence left EGALITE, DIFFERENCE;
+precedence left EGALITE, DIFFERENT;
 precedence left PLUS, MOINS;
 precedence left MULTIPLICATION, DIVISION;
 
@@ -208,7 +212,7 @@ EXP    ::=     CSTENTIERE:c
                EXP:eg INFERIEUR EXP:ed
                {: RESULT = new Inferieur(eg, ed); :}
         |
-               EXP:eg DIFFERENCE EXP:ed
+               EXP:eg DIFFERENT EXP:ed
                {: RESULT = new Different(eg, ed); :}
         |
                EXP:eg ET EXP:ed

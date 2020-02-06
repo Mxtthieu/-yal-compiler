@@ -69,12 +69,12 @@ commentaire = [/][/].*
 "=="                   { return symbol(CodesLexicaux.EGALITE); }
 "<"                    { return symbol(CodesLexicaux.INFERIEUR); }
 ">"                    { return symbol(CodesLexicaux.SUPERIEUR); }
-"!="                   { return symbol(CodesLexicaux.DIFFERENCE); }
+"!="                   { return symbol(CodesLexicaux.DIFFERENT); }
 
 ";"                    { return symbol(CodesLexicaux.POINTVIRGULE); }
 
 "et"                   { return symbol(CodesLexicaux.ET); }
-"ou"                   { return symbol(CodesLexicaux.OU): }
+"ou"                   { return symbol(CodesLexicaux.OU); }
 "non"                  { return symbol(CodesLexicaux.NON); }
 
 "("                    { return symbol(CodesLexicaux.PAROUVR); }

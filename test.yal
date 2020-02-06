@@ -1,5 +1,6 @@
 programme idf
 debut
 entier a;
-entier a;
+a = 5;
+a = 1/0;
 fin
