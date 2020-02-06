@@ -31,8 +31,9 @@ parser code {:
 
             if (s.left >= 0) {                
                 m.append("\tligne : " + (s.left + 1)) ;
-                if (s.right >= 0)                    
+                if (s.right >= 0)
                     m.append(" colonne : " + (s.right+1)) ;
+
             }
             
             if (s.value != null) {
@@ -67,7 +68,7 @@ terminal String    IDF, CSTENTIERE, TYPE ;
    
 /* Non terminals used in the grammar section.  */
 
-non terminal ArbreAbstrait PROG
+non terminal ArbreAbstrait PROG;
 non terminal BlocDInstructions LINST ;
 non terminal Symbol LDECL, DECL, DECL_VAR ;
 non terminal Expression EXP, OPER ;
@@ -154,7 +155,7 @@ CONDITION ::= SI EXP:e ALORS FINSI
           |
               SI EXP:e ALORS LINST:li FINSI
                 {: RESULT = new Condition(e, li, 0) ; :}
-                ;
+
           |
               SI EXP:e ALORS SINON LINST:li FINSI
                 {: RESULT = new Condition(e, li, 1) ; :}
