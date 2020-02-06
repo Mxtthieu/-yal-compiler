@@ -3,7 +3,7 @@ package yal.analyse.symbol;
 public class SymboleFonc extends Symbole {
 
 
-    public SymboleFonc(String t) {
+    public SymboleFonc() {
         super();
     }
 

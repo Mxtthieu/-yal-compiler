@@ -3,7 +3,7 @@ package yal.analyse.symbol;
 public class SymboleEntier extends Symbole {
 
 
-    public SymboleEntier(String t) {
+    public SymboleEntier() {
         super();
     }
 
