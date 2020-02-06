@@ -20,10 +20,13 @@ public class ArithmetiqueBinaire extends Binaire {
         StringBuilder sb = new StringBuilder();
         if (!gauche.getType().equals("entier") || (!droite.getType().equals("entier"))){
             sb.append("Erreur de type : Les deux opérandes ne sont pas des entiers");
+            throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());
         } else if (!gauche.getType().equals("entier")) {
             sb.append("Erreur de type : L'opérande de gauche n'est pas entier");
+            throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());
         } else if (!droite.getType().equals("entier")) {
             sb.append("Erreur de type : L'opérande de droite n'est pas entier");
+            throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());
         }
         throw new AnalyseSemantiqueException(getNoLigne(), sb.toString());
 

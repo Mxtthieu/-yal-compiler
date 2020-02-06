@@ -18,17 +18,21 @@ public class Logique extends Binaire {
     }
 
     @Override
-    public void verifier(){
+    public void verifier()throws AnalyseSemantiqueException{
         StringBuilder sb = new StringBuilder();
         if(gauche.getType().equals("entier") && droite.getType().equals("entier")) {
             sb.append("Erreur de type : l'operande de gauche et droite sont de type entier ");
+            throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());
+
         }else if(gauche.getType().equals("entier")) {
             sb.append("Erreur de type : l'operande de gauche est de type entier ");
+            throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());
 
         }else if(droite.getType().equals("entier")){
             sb.append("Erreur de type : l'operande de droite est de type antier ");
+            throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());
         }
-        throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());
+
     }
 
     @Override
