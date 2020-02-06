@@ -18,4 +18,8 @@ public class ConstanteBooleenne extends Constante {
         return "0";
     }
 
+    @Override
+    public String getType(){
+        return "bool";
+    }
 }

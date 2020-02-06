@@ -15,6 +15,11 @@ public class ConstanteEntiere extends Constante {
         return cste;
     }
 
+    @Override
+    public String getType(){
+        return "entier";
+    }
+
 
 
 }

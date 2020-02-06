@@ -27,5 +27,9 @@ public abstract class Constante extends Expression {
             return sb.toString();
     }
 
+    @Override
+    public String getType(){
+        return null;
+    }
 
 }
