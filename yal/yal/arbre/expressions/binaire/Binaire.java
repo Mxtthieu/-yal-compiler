@@ -4,8 +4,8 @@ import yal.arbre.expressions.Expression;
 
 public abstract class Binaire extends Expression {
 
-    private Expression gauche;
-    private Expression droite;
+    protected Expression gauche;
+    protected Expression droite;
 
     protected Binaire(Expression exp1, Expression exp2) {
         super(exp1.getNoLigne());
