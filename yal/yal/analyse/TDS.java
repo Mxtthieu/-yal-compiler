@@ -2,6 +2,7 @@ package yal.analyse;
 
 import yal.analyse.entre.Entree;
 import yal.analyse.symbol.Symbole;
+import yal.exceptions.AnalyseSemantiqueException;
 import yal.exceptions.AnalyseSyntaxiqueException;
 
 import java.util.HashMap;
@@ -28,7 +29,7 @@ public class TDS {
 
     public Symbole identifier(Entree e){
         if(!tab.containsKey(e)){
-            throw new AnalyseSyntaxiqueException("Non déclaré");
+            //throw new AnalyseSemantiqueException("Non déclaré");
         }
         return tab.get(e);
     }
