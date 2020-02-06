@@ -67,10 +67,11 @@ terminal String    IDF, CSTENTIERE, TYPE ;
    
 /* Non terminals used in the grammar section.  */
 
-non terminal ArbreAbstrait PROG, LINST, INST ;
+non terminal ArbreAbstrait PROG
+non terminal BlocDInstructions LINST ;
 non terminal Symbol LDECL, DECL, DECL_VAR ;
 non terminal Expression EXP, OPER ;
-non terminal Instruction AFFECTATION, ECRITURE, LECTURE, BOUCLE, CONDITION ;
+non terminal Instruction INST, AFFECTATION, ECRITURE, LECTURE, BOUCLE, CONDITION ;
 
 /* Precedences */
 precedence left OU;
@@ -95,7 +96,7 @@ PROG    ::=     PROGRAMME  IDF  DEBUT  LINST:li  FIN
                 ;
 
 LINST   ::=     LINST:li  INST:i
-                {: ((BlocDInstructions)li).ajouter(i) ;
+                {: li.ajouter(i) ;
                    RESULT = li ; :}
         |
                 INST:i

@@ -17,7 +17,7 @@ public class NonLogique extends Unaire{
         super.verifier();
         StringBuilder sb = new StringBuilder();
         if(this.exp.getType().equals("entier")){
-            sb.append("Erreur de type : non logique sur un entier");
+            sb.append("Erreur de type : Non logique sur un entier");
             throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());
         }
     }
@@ -25,9 +25,9 @@ public class NonLogique extends Unaire{
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
-        sb.append("#non logique");
+        sb.append("#Non logique");
         sb.append(super.toMIPS());
-        sb.append("xori $v0, $v0, 1\n");
+        sb.append("    xori $v0, $v0, 1\n");
         return sb.toString();
     }
 

@@ -17,7 +17,7 @@ public class Negation extends Unaire{
         super.verifier();
         StringBuilder sb = new StringBuilder();
         if(this.exp.getType().equals("bool")){
-            sb.append("Erreur de type : negation sur une operande boolenne");
+            sb.append("Erreur de type : Négation sur une opérande booléenne");
             throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());
         }
     }
@@ -27,7 +27,7 @@ public class Negation extends Unaire{
         StringBuilder sb = new StringBuilder();
         sb.append("#non logique");
         sb.append(super.toMIPS());
-        sb.append("xori $v0, $v0, 1\n");
+        sb.append("    neg $v0, $v0\n");
         return sb.toString();
     }
 
