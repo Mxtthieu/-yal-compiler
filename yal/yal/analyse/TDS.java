@@ -28,6 +28,7 @@ public class TDS {
     }
 
     public Symbole identifier(Entree e){
+
         if(!tab.containsKey(e)){
             //throw new AnalyseSemantiqueException("Non déclaré");
         }

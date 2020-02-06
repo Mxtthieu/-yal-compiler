@@ -118,7 +118,7 @@ DECL    ::=     DECL_VAR:dv
 
 DECL_VAR ::=    TYPE:t IDF:i POINTVIRGULE
                 {: EntreeVar e = new EntreeVar(i);
-                   Symbole s = new SymboleEntier("entier");
+                   Symbole s = new SymboleEntier();
                    TDS.getInstance().ajouter(e, s) ; :}
                 ;
                    

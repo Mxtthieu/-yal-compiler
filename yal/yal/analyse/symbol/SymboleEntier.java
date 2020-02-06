@@ -4,7 +4,7 @@ public class SymboleEntier extends Symbole {
 
 
     public SymboleEntier(String t) {
-        super(t);
+        super();
     }
 
     @Override
