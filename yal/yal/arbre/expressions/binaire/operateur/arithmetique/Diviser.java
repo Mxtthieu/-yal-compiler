@@ -14,10 +14,9 @@ public class Diviser extends ArithmetiqueBinaire {
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
-        int hash = hashCode();
         sb.append(super.toMIPS());
         sb.append("    #Division par 0\n");
-        sb.append("    beqz $v0, alorsdiv" + count + "\n");
+        sb.append("    beqz $t8, alorsdiv" + count + "\n");
         sb.append("    div $v0, $t8, $v0\n");
         sb.append("    j findiv" + count + "\n\n");
         sb.append("alorsdiv" + count + " :\n");

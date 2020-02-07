@@ -16,9 +16,9 @@ public class BlocDInstructions extends ArbreAbstrait {
     protected ArrayList<ArbreAbstrait> programme ;
     protected static String data = ".data\n\n" +
             "sautLigne: .asciiz \"\\n\"\n" +
-            "vrai :     .ascizz \"vrai\"\n" +
-            "faux :     .ascizz \"faux\"\n" +
-            "errdiv :   .ascizz \"Erreur : Division par zero\"\n";
+            "vrai :     .asciiz \"vrai\"\n" +
+            "faux :     .asciiz \"faux\"\n" +
+            "errdiv :   .asciiz \"Erreur : Division par zero\"\n";
     protected static String debut = "\n.text\n"+
             "\nmain :\n";
     protected static String fin = "end :\n"+

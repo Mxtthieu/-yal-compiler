@@ -10,6 +10,7 @@ public class Plus extends ArithmetiqueBinaire {
     @Override
     public String toMIPS(){
         StringBuilder sb = new StringBuilder();
+        sb.append(super.toMIPS());
         sb.append("    add $v0, $v0, $t8\n");
         return sb.toString();
     }
