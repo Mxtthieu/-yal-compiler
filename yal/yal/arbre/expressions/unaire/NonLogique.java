@@ -31,4 +31,8 @@ public class NonLogique extends Unaire{
         return sb.toString();
     }
 
+    @Override
+    public String getType() {
+        return "bool";
+    }
 }

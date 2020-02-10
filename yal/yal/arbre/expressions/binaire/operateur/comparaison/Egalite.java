@@ -4,7 +4,7 @@ import yal.arbre.expressions.Expression;
 import yal.arbre.expressions.binaire.Binaire;
 import yal.exceptions.AnalyseSemantiqueException;
 
-public class Egalite extends Binaire {
+public class Egalite extends Comparaison {
 
     private Expression gauche;
     private Expression droite;
@@ -16,11 +16,21 @@ public class Egalite extends Binaire {
     }
 
     @Override
+    public void verifier(){
+        super.verifier();
+    }
+
+    @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
         sb.append("#Egalite\n");
         sb.append(super.toMIPS());
         sb.append("    seq $v0, $t8, $v0\n");
         return sb.toString();
+    }
+
+    @Override
+    public String getType() {
+        return "bool";
     }
 }

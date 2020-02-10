@@ -31,4 +31,8 @@ public class Negation extends Unaire{
         return sb.toString();
     }
 
+    @Override
+    public String getType() {
+        return "bool";
+    }
 }

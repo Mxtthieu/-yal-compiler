@@ -20,7 +20,7 @@ public class Comparaison extends Binaire {
     public void verifier()throws AnalyseSemantiqueException{
         StringBuilder sb = new StringBuilder();
         if (!gauche.getType().equals(droite.getType())){
-            sb.append("Erreur de type : l'operande ne sont pas de même type ");
+            sb.append("Erreur de type : les operandes ne sont pas de même type ");
             throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());
         }
     }
@@ -28,5 +28,10 @@ public class Comparaison extends Binaire {
     @Override
     public String toMIPS(){
         return super.toMIPS();
+    }
+
+    @Override
+    public String getType() {
+        return "bool";
     }
 }

@@ -33,4 +33,9 @@ public class Variable extends Expression{
     public String toString() {
         return idf;
     }
+
+    @Override
+    public String getType() {
+        return type;
+    }
 }

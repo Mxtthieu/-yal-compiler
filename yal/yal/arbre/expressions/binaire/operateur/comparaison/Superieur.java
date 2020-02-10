@@ -19,7 +19,7 @@ public class Superieur extends Comparaison {
         super.verifier();
         StringBuilder sb = new StringBuilder();
         if (gauche.getType().equals("bool")){
-            sb.append("Erreur de type : les deux operandes sont de type cooleenne");
+            sb.append("Erreur de type : les deux operandes sont de type booleenne");
             throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());
         }
     }
@@ -31,5 +31,10 @@ public class Superieur extends Comparaison {
         sb.append(super.toMIPS());
         sb.append("    sgt $v0, $t8, $v0\n");
         return sb.toString();
+    }
+
+    @Override
+    public String getType() {
+        return "bool";
     }
 }

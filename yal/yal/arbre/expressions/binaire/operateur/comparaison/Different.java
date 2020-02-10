@@ -16,6 +16,10 @@ public class Different extends Comparaison {
 
     }
 
+    @Override
+    public void verifier(){
+        super.verifier();
+    }
 
     @Override
     public String toMIPS() {
@@ -24,6 +28,11 @@ public class Different extends Comparaison {
         sb.append(super.toMIPS());
         sb.append("    sne $v0, $t8, $v0\n");
         return sb.toString();
+    }
+
+    @Override
+    public String getType() {
+        return "bool";
     }
 
 }

@@ -40,4 +40,8 @@ public class Logique extends Binaire {
     }
 
 
+    @Override
+    public String getType() {
+        return "bool";
+    }
 }

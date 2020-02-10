@@ -4,7 +4,7 @@ import yal.arbre.expressions.Expression;
 import yal.arbre.expressions.binaire.Binaire;
 import yal.exceptions.AnalyseSemantiqueException;
 
-public class Inferieur extends Binaire {
+public class Inferieur extends Comparaison {
 
     private Expression gauche;
     private Expression droite;
@@ -21,7 +21,7 @@ public class Inferieur extends Binaire {
         super.verifier();
         StringBuilder sb = new StringBuilder();
         if (gauche.getType().equals("bool")){
-            sb.append("Erreur de type : les deux operandes sont de type cooleenne");
+            sb.append("Erreur de type : les deux operandes sont de type booleenne");
             throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());
         }
     }
@@ -33,5 +33,10 @@ public class Inferieur extends Binaire {
         sb.append(super.toMIPS());
         sb.append("    slt $v0, $t8, $v0\n");
         return sb.toString();
+    }
+
+    @Override
+    public String getType() {
+        return "bool";
     }
 }
