@@ -2,5 +2,5 @@ programme idf
 debut
 entier a;
 a = 5;
-ecrire -5;
+ecrire 1 + 2;
 fin
