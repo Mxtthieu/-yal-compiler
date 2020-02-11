@@ -21,7 +21,7 @@ public class Inferieur extends Comparaison {
         super.verifier();
         StringBuilder sb = new StringBuilder();
         if (gauche.getType().equals("bool")){
-            sb.append("Erreur de type : les deux operandes sont de type booleenne");
+            sb.append("Erreur de type : Les deux opérandes sont de type booléens");
             throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());
         }
     }
@@ -29,7 +29,7 @@ public class Inferieur extends Comparaison {
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
-        sb.append("#Inferieure\n");
+        sb.append("    # Inferieure\n");
         sb.append(super.toMIPS());
         sb.append("    slt $v0, $t8, $v0\n");
         return sb.toString();

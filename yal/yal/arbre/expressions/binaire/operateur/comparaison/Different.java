@@ -24,7 +24,7 @@ public class Different extends Comparaison {
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
-        sb.append("#Diffrence\n");
+        sb.append("    # Difference\n");
         sb.append(super.toMIPS());
         sb.append("    sne $v0, $t8, $v0\n");
         return sb.toString();

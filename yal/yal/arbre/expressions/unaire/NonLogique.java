@@ -25,7 +25,7 @@ public class NonLogique extends Unaire{
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
-        sb.append("#Non logique");
+        sb.append("    # Non Logique\n");
         sb.append(super.toMIPS());
         sb.append("    xori $v0, $v0, 1\n");
         return sb.toString();

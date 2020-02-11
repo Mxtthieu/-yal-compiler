@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 
 public class BlocDInstructions extends ArbreAbstrait {
+
     protected ArrayList<ArbreAbstrait> programme ;
     protected static String data = ".data\n\n" +
             "sautLigne: .asciiz \"\\n\"\n" +
@@ -55,9 +56,9 @@ public class BlocDInstructions extends ArbreAbstrait {
         sb.append(data);
         sb.append(debut);
         sb.append("    move $s7, $sp\n");
-        sb.append("    #On réserve la place pour "+taille/-4+" variables\n");
-        sb.append("    addi $sp, $sp, "+taille+"\n");
-        if (taille!=0) {
+        sb.append("    #On réserve la place pour " + taille / -4 + " variables\n");
+        sb.append("    addi $sp, $sp, " + taille + "\n");
+        if (taille != 0) {
             sb.append("\n");
             sb.append("    #Initialisation des variables à 0 : \n");
             for (int i = 0; i < -taille; i += 4) {
@@ -66,11 +67,14 @@ public class BlocDInstructions extends ArbreAbstrait {
         }
         sb.append("\n");
         for (ArbreAbstrait aa : programme) {
-            sb.append(aa.toMIPS()) ;
+            sb.append(aa.toMIPS());
             sb.append("\n");
         }
         sb.append(fin);
         return sb.toString() ;
     }
 
+    public ArrayList<ArbreAbstrait> getProgramme() {
+        return programme;
+    }
 }

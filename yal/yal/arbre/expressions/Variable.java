@@ -20,6 +20,7 @@ public class Variable extends Expression{
         Symbole s = TDS.getInstance().identifier(e);
         dep = s.getDep();
         type = s.getType();
+        System.out.println(type);
     }
 
     @Override

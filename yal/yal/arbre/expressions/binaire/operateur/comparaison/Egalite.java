@@ -23,7 +23,7 @@ public class Egalite extends Comparaison {
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
-        sb.append("#Egalite\n");
+        sb.append("    # Egalité\n");
         sb.append(super.toMIPS());
         sb.append("    seq $v0, $t8, $v0\n");
         return sb.toString();
@@ -32,5 +32,13 @@ public class Egalite extends Comparaison {
     @Override
     public String getType() {
         return "bool";
+    }
+
+    public Expression getGauche() {
+        return gauche;
+    }
+
+    public Expression getDroite() {
+        return droite;
     }
 }

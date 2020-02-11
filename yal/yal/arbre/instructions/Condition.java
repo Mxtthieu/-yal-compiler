@@ -1,6 +1,7 @@
 package yal.arbre.instructions;
 
 import yal.arbre.BlocDInstructions;
+import yal.arbre.FabriqueNumero;
 import yal.arbre.expressions.Expression;
 import yal.exceptions.AnalyseSemantiqueException;
 
@@ -9,14 +10,13 @@ public class Condition extends Instruction{
     private Expression exp;
     private BlocDInstructions ctrue;
     private BlocDInstructions cfalse;
-    private static int count = 0;
 
     public Condition(Expression e) {
         super(e.getNoLigne());
         exp = e;
         ctrue = new BlocDInstructions(noLigne +1);
         cfalse = new BlocDInstructions(noLigne +1);
-        count++;
+
     }
 
     public Condition(Expression e, BlocDInstructions b, int typeBloc) {
@@ -29,7 +29,6 @@ public class Condition extends Instruction{
             cfalse = b;
             ctrue = new BlocDInstructions(noLigne + 1);
         }
-        count++;
     }
 
     public Condition(Expression e, BlocDInstructions b, BlocDInstructions b2){
@@ -37,7 +36,6 @@ public class Condition extends Instruction{
         exp = e;
         ctrue = b;
         cfalse = b2;
-        count++;
     }
 
     @Override
@@ -54,18 +52,19 @@ public class Condition extends Instruction{
 
     @Override
     public String toMIPS() {
+        int compteur = FabriqueNumero.getInstance().getNumero();
         StringBuilder sb = new StringBuilder();
         sb.append("#Condition \n");
-        sb.append("si"+ count +" :\n");
+        sb.append("si"+ compteur +" :\n");
         sb.append(exp.toMIPS());
-        sb.append("    beqz $v0, sinon"+ count +" :\n");
-        sb.append("alors"+ count +" :\n");
+        sb.append("    beqz $v0, sinon"+ compteur +" :\n");
+        sb.append("alors"+ compteur +" :\n");
         sb.append(ctrue.toMIPS());
-        sb.append("j fin"+ count +" :\n");
-        sb.append("fin"+ count +" :\n");
-        sb.append("sinon"+ count +" :\n");
+        sb.append("j fin"+ compteur +" :\n");
+        sb.append("fin"+ compteur +" :\n");
+        sb.append("sinon"+ compteur +" :\n");
         sb.append(cfalse.toMIPS());
-        sb.append("fin"+ count+ ":\n");
+        sb.append("fin"+ compteur + ":\n");
         return sb.toString();
     }
 }

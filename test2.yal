@@ -1,0 +1,35 @@
+programme idf
+debut
+entier a;
+entier b;
+entier c;
+a = 2;
+b = 5;
+c = b + a;
+ecrire c; // 7
+a = -a;
+ecrire a; // -2
+ecrire 5; // 5
+ecrire (5); // 5
+ecrire -1; // -1
+ecrire 5-2; // 3
+ecrire 5+2; // 7
+ecrire 5<2; // Faux
+ecrire 2<5; // Vrai
+ecrire 5>2; // Vrai
+ecrire 2>5; // Faux
+ecrire 5==2; // Faux
+ecrire 5==5; // Vrai
+ecrire 5!=2; // Vrai
+ecrire 5!=5; // Faux
+ecrire 5/2; // 2
+ecrire 5*2; // 10
+ecrire 2/5; // 0
+ecrire 2*5; // 10
+ecrire 5!=5 et 5!=4; // Faux
+ecrire 4!=5 et 5!=4; // Vrai
+ecrire 5!=5 ou 5!=4; // Vrai
+ecrire 5!=5 ou 4!=4; // Faux
+ecrire non 5==2; // Vrai
+ecrire non 5!=2; // Faux
+fin

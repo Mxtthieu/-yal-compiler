@@ -1,16 +1,15 @@
 package yal.arbre.instructions;
 
+import yal.arbre.FabriqueNumero;
 import yal.arbre.expressions.Expression;
 
 public class Ecrire extends Instruction {
 
     protected Expression exp ;
-    private static int count = 0;
 
     public Ecrire (Expression e, int n) {
         super(n) ;
         exp = e ;
-        count++;
     }
 
     @Override
@@ -20,16 +19,23 @@ public class Ecrire extends Instruction {
 
     @Override
     public String toMIPS() {
+        int compteur = FabriqueNumero.getInstance().getNumero();
         StringBuilder res = new StringBuilder();
         if (exp.getType().equals("bool")) {
             res.append("    #Ecrire une expression booléenne\n");
             res.append(exp.toMIPS());
-            res.append("    beqz $v0, alorsbool"+ count +"\n");
+            res.append("    beqz $v0, alorsbool"+ compteur +"\n");
             res.append("    la $a0, vrai\n");
-            res.append("    j finbool"+ count +"\n");
-            res.append("alorsbool"+ count +" :\n");
+            res.append("    li $v0, 4 # $v0 <- 4 : Code du print str\n");
+            res.append("    la $a0, vrai\n");
+            res.append("    syscall\n\n");
+            res.append("    j finbool"+ compteur +"\n");
+            res.append("alorsbool"+ compteur +" :\n");
             res.append("    la $a0, faux\n");
-            res.append("finbool"+ count +" :\n");
+            res.append("    li $v0, 4 # $v0 <- 4 : Code du print str\n");
+            res.append("    la $a0, faux\n");
+            res.append("    syscall\n\n");
+            res.append("finbool"+ compteur +" :\n");
             res.append("    li $v0, 4 # $v0 <- 4 : Code du print str\n");
             res.append("    la $a0, sautLigne\n");
             res.append("    syscall\n\n");

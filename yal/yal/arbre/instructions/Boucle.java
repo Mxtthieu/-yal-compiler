@@ -1,19 +1,19 @@
 package yal.arbre.instructions;
 
+import yal.arbre.ArbreAbstrait;
 import yal.arbre.BlocDInstructions;
+import yal.arbre.FabriqueNumero;
 import yal.arbre.expressions.Expression;
 import yal.exceptions.AnalyseSemantiqueException;
 
 public class Boucle extends Instruction {
     private Expression exp;
     private BlocDInstructions bInst;
-    private static int count = 0;
 
     public Boucle(Expression e, BlocDInstructions b) {
         super(e.getNoLigne());
         exp = e;
         bInst = b;
-        count++;
     }
 
     @Override
@@ -28,14 +28,19 @@ public class Boucle extends Instruction {
 
     @Override
     public String toMIPS() {
+        int compteur = FabriqueNumero.getInstance().getNumero();
         StringBuilder sb = new StringBuilder();
-        sb.append("#Boucle while\n");
-        sb.append("tantque"+ count +":\n");
+        sb.append("    #Boucle while\n");
+        sb.append("tantque"+ compteur +":\n");
         sb.append(exp.toMIPS());
-        sb.append("    beqz $v0, finTantQue"+ count +"\n");
-        sb.append("iteration"+ count +" :\n");
-        sb.append("    j tantque"+ count + " :\n");
-        sb.append("finTantQue" + count + " :\n");
+        sb.append("    beqz $v0, finTantQue"+ compteur +"\n");
+        sb.append("iteration"+ compteur +" :\n");
+        for (ArbreAbstrait e : bInst.getProgramme()){
+            e.toMIPS();
+        }
+        sb.append(bInst.toMIPS());
+        sb.append("    j tantque"+ compteur + "\n");
+        sb.append("finTantQue" + compteur + " :\n");
         return sb.toString();
     }
 }

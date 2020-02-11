@@ -25,7 +25,7 @@ public class Negation extends Unaire{
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
-        sb.append("#non logique");
+        sb.append("    # Negation\n");
         sb.append(super.toMIPS());
         sb.append("    neg $v0, $v0\n");
         return sb.toString();
@@ -33,6 +33,6 @@ public class Negation extends Unaire{
 
     @Override
     public String getType() {
-        return "bool";
+        return "entier";
     }
 }
