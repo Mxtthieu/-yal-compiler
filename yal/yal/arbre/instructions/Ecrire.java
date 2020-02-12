@@ -15,6 +15,7 @@ public class Ecrire extends Instruction {
     @Override
     public void verifier() {
         exp.verifier();
+
     }
 
     @Override

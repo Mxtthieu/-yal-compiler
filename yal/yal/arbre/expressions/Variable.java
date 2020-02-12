@@ -3,12 +3,14 @@ package yal.arbre.expressions;
 import yal.analyse.TDS;
 import yal.analyse.entre.EntreeVar;
 import yal.analyse.symbol.Symbole;
+import yal.analyse.symbol.SymboleEntier;
 
-public class Variable extends Expression{
+public class Variable extends Expression {
 
     private String idf;
     private String type;
     private int dep;
+
     public Variable(String s, int n) {
         super(n);
         idf = s;
@@ -20,7 +22,6 @@ public class Variable extends Expression{
         Symbole s = TDS.getInstance().identifier(e);
         dep = s.getDep();
         type = s.getType();
-        System.out.println(type);
     }
 
     @Override

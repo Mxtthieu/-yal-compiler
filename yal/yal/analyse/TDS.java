@@ -9,8 +9,10 @@ import java.util.HashMap;
 
 public class TDS {
 
-    private static TDS instance = new TDS();
+    private static final TDS instance = new TDS();
     private HashMap<Entree, Symbole> tab;
+
+    private int ligne;
 
     private TDS(){
         tab = new HashMap<>();
@@ -20,9 +22,10 @@ public class TDS {
         return instance;
     }
 
-    public void ajouter(Entree e, Symbole s){
+    public void ajouter(Entree e, Symbole s, int n){
+        ligne = n;
         if(tab.containsKey(e)){
-            throw new AnalyseSyntaxiqueException("Double déclaration : " + e.toString());
+            throw new AnalyseSemantiqueException(ligne,"Double déclaration : " + e.toString());
         }
         tab.put(e,s);
     }
@@ -30,7 +33,7 @@ public class TDS {
     public Symbole identifier(Entree e){
 
         if(!tab.containsKey(e)){
-            //throw new AnalyseSemantiqueException("Non déclaré");
+            throw new AnalyseSemantiqueException(ligne,"Non déclaré : " + e.toString());
         }
         return tab.get(e);
     }

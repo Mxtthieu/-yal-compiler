@@ -6,14 +6,8 @@ import yal.exceptions.AnalyseSemantiqueException;
 
 public class Inferieur extends Comparaison {
 
-    private Expression gauche;
-    private Expression droite;
-
     public Inferieur(Expression exp1, Expression exp2) {
         super(exp1, exp2);
-        gauche = exp1;
-        droite = exp2;
-
     }
 
     @Override
@@ -35,8 +29,4 @@ public class Inferieur extends Comparaison {
         return sb.toString();
     }
 
-    @Override
-    public String getType() {
-        return "bool";
-    }
 }

@@ -102,6 +102,7 @@ PROG    ::=     PROGRAMME  IDF  DEBUT  LINST:li  FIN
                 {: RESULT = li ; :}
                 ;
 
+
 LINST   ::=     LINST:li  INST:i
                 {: li.ajouter(i) ;
                    RESULT = li ; :}
@@ -145,7 +146,7 @@ DECL    ::=     DECL_VAR:dv
 DECL_VAR ::=    TYPE:t IDF:i POINTVIRGULE
                 {: EntreeVar e = new EntreeVar(i);
                    Symbole s = new SymboleEntier();
-                   TDS.getInstance().ajouter(e, s) ; :}
+                   TDS.getInstance().ajouter(e, s, ileft) ; :}
                 ;
                    
 AFFECTATION ::= IDF:i EGAL EXP:e POINTVIRGULE

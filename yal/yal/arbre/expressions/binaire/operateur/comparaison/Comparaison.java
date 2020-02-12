@@ -6,17 +6,13 @@ import yal.exceptions.AnalyseSemantiqueException;
 
 public class Comparaison extends Binaire {
 
-    private Expression gauche;
-    private Expression droite;
-
     public Comparaison (Expression exp1, Expression exp2) {
         super(exp1, exp2);
-        gauche = exp1;
-        droite = exp2;
     }
 
     @Override
     public void verifier()throws AnalyseSemantiqueException{
+        super.verifier();
         StringBuilder sb = new StringBuilder();
         if (!gauche.getType().equals(droite.getType())){
             sb.append("Erreur de type : Les opérandes ne sont pas de même type ");

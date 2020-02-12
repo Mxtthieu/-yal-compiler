@@ -29,14 +29,14 @@ public class BlocDInstructions extends ArbreAbstrait {
     private int taille;
 
     public BlocDInstructions(int n) {
-        super(n) ;
+        super(n);
         programme = new ArrayList<>() ;
     }
-    
+
     public void ajouter(ArbreAbstrait a) {
         programme.add(a) ;
     }
-    
+
     @Override
     public String toString() {
         return programme.toString() ;
@@ -49,7 +49,7 @@ public class BlocDInstructions extends ArbreAbstrait {
             aa.verifier() ;
         }
     }
-    
+
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
@@ -77,4 +77,5 @@ public class BlocDInstructions extends ArbreAbstrait {
     public ArrayList<ArbreAbstrait> getProgramme() {
         return programme;
     }
+
 }

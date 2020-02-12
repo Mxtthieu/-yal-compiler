@@ -60,8 +60,7 @@ public class Condition extends Instruction{
         sb.append("    beqz $v0, sinon"+ compteur +" :\n");
         sb.append("alors"+ compteur +" :\n");
         sb.append(ctrue.toMIPS());
-        sb.append("j fin"+ compteur +" :\n");
-        sb.append("fin"+ compteur +" :\n");
+        sb.append("j fin"+ compteur +" \n");
         sb.append("sinon"+ compteur +" :\n");
         sb.append(cfalse.toMIPS());
         sb.append("fin"+ compteur + ":\n");

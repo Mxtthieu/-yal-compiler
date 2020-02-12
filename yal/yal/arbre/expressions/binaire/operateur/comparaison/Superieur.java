@@ -4,14 +4,9 @@ import yal.arbre.expressions.Expression;
 import yal.exceptions.AnalyseSemantiqueException;
 
 public class Superieur extends Comparaison {
-    private Expression gauche;
-    private Expression droite;
 
     public Superieur (Expression exp1, Expression exp2) {
         super(exp1, exp2);
-        gauche = exp1;
-        droite = exp2;
-
     }
 
     @Override
@@ -32,9 +27,5 @@ public class Superieur extends Comparaison {
         sb.append("    sgt $v0, $t8, $v0\n");
         return sb.toString();
     }
-
-    @Override
-    public String getType() {
-        return "bool";
-    }
+    
 }

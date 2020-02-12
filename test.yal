@@ -1,9 +1,11 @@
 programme idf debut
 entier a;
+entier b;
+entier c;
 a = 1;
-a = a + 1;
-//tantque a > 2 repeter a = a + 1;
-//fintantque
+ecrire a == 5;
+tantque a > 2 repeter a = a + 1;
+fintantque
 si 5 != 1 alors
 ecrire a;
 sinon

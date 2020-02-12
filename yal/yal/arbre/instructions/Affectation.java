@@ -22,11 +22,6 @@ public class Affectation extends Instruction{
     public void verifier() {
         EntreeVar e = new EntreeVar(idf);
         Symbole s = TDS.getInstance().identifier(e);
-
-        if (s == null){
-            throw new AnalyseSemantiqueException(exp.getNoLigne(), "Aucune déclaration de "+idf+".");
-        }
-
         this.dep = s.getDep();
         exp.verifier();
     }
@@ -39,4 +34,5 @@ public class Affectation extends Instruction{
         sb.append("    sw $v0, "+dep+"($s7)\n\n");
         return sb.toString();
     }
+    
 }

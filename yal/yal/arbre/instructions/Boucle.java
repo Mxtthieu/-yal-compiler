@@ -34,7 +34,6 @@ public class Boucle extends Instruction {
         sb.append("tantque"+ compteur +":\n");
         sb.append(exp.toMIPS());
         sb.append("    beqz $v0, finTantQue"+ compteur +"\n");
-        sb.append("iteration"+ compteur +" :\n");
         for (ArbreAbstrait e : bInst.getProgramme()){
             e.toMIPS();
         }
