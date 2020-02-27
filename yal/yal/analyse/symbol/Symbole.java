@@ -5,10 +5,13 @@ import yal.analyse.TDS;
 public abstract class Symbole {
 
     private int dep;
-
+    private int idRegion;
+    private int idBox;
 
     public Symbole(){
         dep = TDS.getInstance().TailleZoneVariable();
+        idRegion = TDS.getInstance().getIdRegion();
+        idBox = TDS.getInstance().getIdRegion();
     }
 
     public int getDep() {
@@ -19,4 +22,11 @@ public abstract class Symbole {
         return null;
     }
 
+    public int getIdBox() {
+        return idBox;
+    }
+
+    public int getIdRegion() {
+        return idRegion;
+    }
 }
