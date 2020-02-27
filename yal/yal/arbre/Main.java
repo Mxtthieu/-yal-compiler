@@ -6,7 +6,9 @@ import yal.arbre.instructions.Instruction;
 import java.util.ArrayList;
 
 public class Main extends ArbreAbstrait {
+
     protected ArrayList<ArbreAbstrait> programme ;
+
     protected static String data = ".data\n\n" +
             "sautLigne: .asciiz \"\\n\"\n" +
             "vrai :     .asciiz \"vrai\"\n" +

@@ -17,11 +17,15 @@ public class Retourner extends Instruction {
     @Override
     public void verifier() {
         exp.verifier();
-        if(exp.getType().equals("entier")){
-            throw new AnalyseSemantiqueException(getNoLigne(),"erreur type :\n return" + exp + "\n une fonction doit retourner un entier");
+        if (exp.getType().equals("entier")) {
+            throw new AnalyseSemantiqueException(getNoLigne(), "erreur type :\n return" + exp + "\n une fonction doit retourner un entier");
         }
         idRegion = TDS.getInstance().getIdRegion();
 
+    }
+    @Override
+    public boolean isRetourner(){
+        return true;
     }
 
     @Override
