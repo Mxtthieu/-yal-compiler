@@ -1,7 +1,16 @@
 package yal.analyse.entre;
 
 public class EntreeFonc extends Entree {
-    public EntreeFonc(String s) {
+
+    private int nbParam;
+
+    public EntreeFonc(String s, int n) {
         super(s);
+        nbParam = n;
     }
+
+    public int getNbParam(){
+        return nbParam;
+    }
+
 }

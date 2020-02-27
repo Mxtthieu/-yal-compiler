@@ -42,4 +42,16 @@ public class TDS {
         return -(tab.size()*4);
     }
 
+    public int getIdRegion(){
+        return 1;
+    }
+
+    public void debutDeBloc(){
+
+    }
+
+    public void finDeBloc(){
+
+    }
+
 }
