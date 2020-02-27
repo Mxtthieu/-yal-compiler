@@ -67,7 +67,7 @@ parser code {:
    
 /* Terminals (tokens returned by the scanner).  */
 
-terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, EGAL, LIRE ;
+terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, EGAL, LIRE, FONCTION, RETOUR ;
 terminal Symbol    SI, ALORS, SINON, FINSI, TANTQUE, REPETER, FINTANTQUE ;
 terminal Symbol    PLUS, MOINS, MULTIPLICATION, DIVISION, PAROUVR, PARFER ;
 terminal Symbol    EGALITE, DIFFERENT, INFERIEUR, SUPERIEUR, ET, OU, NON ;
@@ -75,10 +75,11 @@ terminal String    IDF, CSTENTIERE, TYPE ;
    
 /* Non terminals used in the grammar section.  */
 
+non terminal Symbole DECL_FONCTION, PARAMETRES;
 non terminal ArbreAbstrait PROG, START;
 non terminal BlocDInstructions LINST, LDECL;
 non terminal Expression EXP, OPER ;
-non terminal Instruction INST, DECL, DECL_VAR, AFFECTATION, ECRITURE, LECTURE, BOUCLE, CONDITION ;
+non terminal Instruction INST, DECL, DECL_VAR, AFFECTATION, ECRITURE, LECTURE, BOUCLE, CONDITION, RETOURNE ;
 
 /* Precedences */
 precedence left OU;
@@ -132,6 +133,9 @@ INST    ::=     AFFECTATION:a
         |
                 LECTURE:l
                 {: RESULT = l ; :}
+        |
+                RETOURNE:r
+                {: RESULT = r ; :}
                 ;
 
 LDECL   ::=     LDECL:ld  DECL:d
