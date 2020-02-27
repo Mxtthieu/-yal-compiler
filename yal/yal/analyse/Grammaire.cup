@@ -242,11 +242,11 @@ EXP    ::=     CSTENTIERE:c
                ;
 
 DECL_FONCTION ::= FONCTION IDF:i PARAMETRES:p DEBUT LINST:li FIN
-               {: TDS.getInstance().entreeBloc();
+               {: TDS.getInstance().debutDeBloc();
                   EntreeFonction entree = new EntreeFonction(i,p);
                   SymboleFonction symbole = new SymboleFonction();
                   RESULT = new Fonction(li, i, p, ileft + 1);
-                  TDS.getInstance().sortieBloc();
+                  TDS.getInstance().finDeBloc();
                   TDS.getInstance().ajouter(entree, symbole, ileft + 1); :}
                ;
  
