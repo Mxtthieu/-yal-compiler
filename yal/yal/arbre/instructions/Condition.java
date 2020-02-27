@@ -63,7 +63,7 @@ public class Condition extends Instruction{
         sb.append("j fin"+ compteur +" \n");
         sb.append("sinon"+ compteur +" :\n");
         sb.append(cfalse.toMIPS());
-        sb.append("fin"+ compteur + ":\n");
+        sb.append("finsi"+ compteur + ":\n");
         return sb.toString();
     }
 }

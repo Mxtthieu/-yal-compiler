@@ -4,8 +4,12 @@ import yal.arbre.ArbreAbstrait;
 
 public abstract class Instruction extends ArbreAbstrait {
 
-    protected Instruction(int n) {
+    public Instruction(int n) {
         super(n);
+    }
+
+    public boolean isRetourner(){
+        return false;
     }
 
 }

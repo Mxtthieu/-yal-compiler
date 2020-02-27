@@ -51,7 +51,7 @@ public class BlocDInstructions extends ArbreAbstrait {
     public boolean isRetourne(){
         boolean res = false;
         for(Instruction i : inst){
-            res = i.isRetourne();
+            res = i.isRetourner();
         }
         return res;
     }
