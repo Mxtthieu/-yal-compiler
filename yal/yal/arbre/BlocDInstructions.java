@@ -13,69 +13,38 @@ import java.util.ArrayList;
  */
 
 public class BlocDInstructions extends ArbreAbstrait {
-
-    protected ArrayList<ArbreAbstrait> programme ;
-    protected static String data = ".data\n\n" +
-            "sautLigne: .asciiz \"\\n\"\n" +
-            "vrai :     .asciiz \"vrai\"\n" +
-            "faux :     .asciiz \"faux\"\n" +
-            "errdiv :   .asciiz \"Erreur : Division par zero\"\n";
-    protected static String debut = "\n.text\n"+
-            "\nmain :\n";
-    protected static String fin = "end :\n"+
-            "    li $v0, 10\n" +
-            "    syscall\n";
-
-    private int taille;
+    protected ArrayList<Instruction> inst;
 
     public BlocDInstructions(int n) {
         super(n);
-        programme = new ArrayList<>() ;
+        inst = new ArrayList<>() ;
     }
 
-    public void ajouter(ArbreAbstrait a) {
-        programme.add(a) ;
+    public void ajouter(Instruction a) {
+        inst.add(a) ;
     }
 
     @Override
     public String toString() {
-        return programme.toString() ;
+        return inst.toString() ;
     }
 
     @Override
     public void verifier() {
-        taille = TDS.getInstance().TailleZoneVariable();
-        for (ArbreAbstrait aa : programme) {
-            aa.verifier() ;
+        for (Instruction i : inst) {
+            i.verifier();
         }
     }
 
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
-        sb.append(data);
-        sb.append(debut);
-        sb.append("    move $s7, $sp\n");
-        sb.append("    #On réserve la place pour " + taille / -4 + " variables\n");
-        sb.append("    addi $sp, $sp, " + taille + "\n");
-        if (taille != 0) {
-            sb.append("\n");
-            sb.append("    #Initialisation des variables à 0 : \n");
-            for (int i = 0; i < -taille; i += 4) {
-                sb.append("    sw $zero, " + -i + "($s7)\n");
-            }
-        }
-        sb.append("\n");
-        for (ArbreAbstrait aa : programme) {
-            sb.append(aa.toMIPS());
+        for (Instruction i : inst) {
+            sb.append(i.toMIPS()) ;
             sb.append("\n");
         }
-        sb.append(fin);
         return sb.toString() ;
-    }
 
-    public ArrayList<ArbreAbstrait> getProgramme() {
-        return programme;
     }
-
+    
 }
