@@ -232,4 +232,20 @@ EXP    ::=     CSTENTIERE:c
         |
                EXP:eg OU EXP:ed
                {: RESULT = new OuLogique(eg, ed); :}
+        |
+               IDF:i PAROUVR PARFER
+               {: :}
                ;
+
+DECL_FONCTION ::= FONCTION IDF:i PARAMETRES DEBUT LINST:li FIN
+               {: :}
+               ;
+ 
+
+PARAMETRES ::=  PAROUVR PARFER
+               {: :}
+               ;
+
+RETOURNE ::=    RETOUR EXP:e
+                {: /*RESULT = new Retour(e, eleft + 1);*/ :}
+                ;

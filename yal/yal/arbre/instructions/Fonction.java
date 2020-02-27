@@ -57,6 +57,6 @@ public class Fonction extends Instruction{
         TDS.getInstance().debutDeBloc();
         bloc.verifier();
         TDS.getInstance().finDeBloc();
-        }
     }
 }
+
