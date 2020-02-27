@@ -38,11 +38,11 @@ public class AppelFonction extends Expression{
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
-        sb.append("#Appel de fonction");
-        sb.append("add $sp, $sp, -4\n");
-        sb.append("jal "+label+"\n");
-        sb.append("add $sp, $sp, 4\n");
-        sb.append("lw $v0, 0($sp)\n");
+        sb.append("    #Appel de fonction\n");
+        sb.append("    add $sp, $sp, -4\n");
+        sb.append("    jal "+label+"\n");
+        sb.append("    add $sp, $sp, 4\n");
+        sb.append("    lw $v0, 0($sp)\n");
         return sb.toString();
     }
 }

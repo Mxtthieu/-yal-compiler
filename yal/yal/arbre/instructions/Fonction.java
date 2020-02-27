@@ -6,7 +6,7 @@ import yal.analyse.symbol.SymboleFonc;
 import yal.arbre.BlocDInstructions;
 import yal.exceptions.AnalyseSemantiqueException;
 
-public class Fonction extends Instruction{
+public class Fonction extends Instruction {
     private String idf;
     private String label;
     private int idBloc;
@@ -21,24 +21,25 @@ public class Fonction extends Instruction{
         memoryVar = TDS.getInstance().sizeMemoryVar();
     }
 
-    public boolean isRetourne(){
+    public boolean isRetourner(){
         return bloc.isRetourne();
     }
 
     @Override
     public String toMIPS() {
+
         StringBuilder sb = new StringBuilder();
-        sb.append("#Definition de fonction\n");
+        sb.append("    #Definition de fonction\n");
         sb.append(label+":\n");
-        sb.append("sw $ra, 0($sp)\n");
-        sb.append("add $sp, $sp, -4\n");
-        sb.append("sw $s7, 0($sp)\n");
-        sb.append("add $sp, $sp, -4\n");
-        sb.append("li $t8,"+idBloc+"\n");
-        sb.append("sw $t8, 0($sp)\n");
-        sb.append("add $sp, $sp, -4\n");
-        sb.append("move $s7, $sp\n");
-        bloc.toMIPS();
+        sb.append("    sw $ra, 0($sp)\n");
+        sb.append("    add $sp, $sp, -4\n");
+        sb.append("    sw $s7, 0($sp)\n");
+        sb.append("    add $sp, $sp, -4\n");
+        sb.append("    li $t8,"+idBloc+"\n");
+        sb.append("    sw $t8, 0($sp)\n");
+        sb.append("    add $sp, $sp, -4\n");
+        sb.append("    move $s7, $sp\n");
+        sb.append(bloc.toMIPS());
         return sb.toString();
     }
 

@@ -13,6 +13,7 @@ public class SymboleFonc extends Symbole {
         super();
         label = "fonc"+ FabriqueNumero.getInstance().getNumero();
         paramType = new ArrayList<>();
+        this.dep = 0;
     }
 
     @Override

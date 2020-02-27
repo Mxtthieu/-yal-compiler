@@ -4,7 +4,7 @@ import yal.analyse.TDS;
 
 public abstract class Symbole {
 
-    private int dep;
+    protected int dep;
     private int idRegion;
     private int idBox;
 

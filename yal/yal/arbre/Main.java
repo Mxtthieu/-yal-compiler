@@ -21,15 +21,18 @@ public class Main extends ArbreAbstrait {
             "    syscall\n";
     private int taille;
     private BlocDInstructions bloc;
+    private BlocDInstructions bloc2;
 
     public Main(BlocDInstructions b, int i) {
         super(i);
         bloc = b;
+        bloc2 = null;
     }
 
     public Main(BlocDInstructions dec, BlocDInstructions inst, int i) {
         super(i);
         bloc = inst;
+        bloc2 = dec;
     }
 
 
@@ -38,6 +41,7 @@ public class Main extends ArbreAbstrait {
         TDS.getInstance().debutDeBloc();
         taille = TDS.getInstance().TailleZoneVariable();
         bloc.verifier();
+        bloc2.verifier();
         TDS.getInstance().finDeBloc();
     }
 
@@ -62,6 +66,9 @@ public class Main extends ArbreAbstrait {
         }
         sb.append("\n");
         sb.append(bloc.toMIPS());
+        if(bloc2 != null) {
+            sb.append(bloc2.toMIPS());
+        }
         sb.append(fin);
         return sb.toString() ;
     }

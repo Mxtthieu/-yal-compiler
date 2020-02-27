@@ -75,12 +75,12 @@ terminal String    IDF, CSTENTIERE, TYPE ;
    
 /* Non terminals used in the grammar section.  */
 
-non terminal Fonction DECL_FONCTION;
+non terminal Fonction ;
 non terminal Integer PARAMETRES;
 non terminal ArbreAbstrait PROG, START;
 non terminal BlocDInstructions LINST, LDECL;
 non terminal Expression EXP, OPER ;
-non terminal Instruction INST, DECL, DECL_VAR, AFFECTATION, ECRITURE, LECTURE, BOUCLE, CONDITION, RETOURNE ;
+non terminal Instruction INST, DECL, DECL_VAR, AFFECTATION, ECRITURE, LECTURE, BOUCLE, CONDITION, RETOURNE, DECL_FONCTION ;
 
 /* Precedences */
 precedence left OU;
