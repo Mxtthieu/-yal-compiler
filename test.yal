@@ -1,100 +1,15 @@
-programme ayaya
+programme oklm
 debut
 
-entier e ;
-entier a ;
-entier b ;
-entier k ;
-entier y ;
-entier z ;
-entier t ;
-entier s ;
-entier quarantequatre;
-entier testImbrication;
-entier camarchebien;
+entier a;
 
-fonction ayayaClap() debut
-	e = 6;
-	k = 7;
-	retourne e + k * a; fin
+fonction incremente() debut
+	a = a + 1;
+	retourne a;
+fin
 
-fonction ayayaClapClap() debut
-    y = 15;
-    z = 3;
-    t = y + z + b;
-    retourne t * ayayaClap(); fin
-
-fonction camarchebien() debut
-    testImbrication = 1 + 3;
-    retourne testImbrication() + testImbrication ; fin
-
-fonction testImbrication() debut
-    retourne ayayaClapClap() * 2; fin
-
-fonction lastboss() debut
-    retourne camarchebien() / 4; fin
-
-fonction yal2() debut
-    lire a ; //entrez 5
-    lire b ; //entrez 4
-
-    k = 5 ;
-    s = 0 ;
-    quarantequatre = 0;
-    e = k + a * b + k - k*15 + k/5 ;
-    ecrire e;
-
-    //premier tant que basique
-    tantque e < 0 repeter
-    e = e + 1;
-    quarantequatre = quarantequatre + 1;
-    fintantque
-
-    ecrire quarantequatre; //il devrait etre a 44 si les parametres rentré dans mips sont 5 et 4
-
-    //premiere conditionnelle basique
-    si e < 0 alors
-    ecrire e;
-    sinon
-    ecrire a;
-    finsi
-
-    //réinitialisation des variables
-    e = 0;
-    a = 0;
-
-    //on vérifie si e est à 0
-    ecrire e == 0;
-
-    //tant que imbriqué pour incrémenter s à 100
-    tantque e < 10 repeter
-        tantque a < 10 repeter
-          s = s + 1;
-          a = a + 1;
-        fintantque
-        a = 0;
-        e = e + 1;
-    fintantque
-
-    si s == 100 et a == 0 alors
-    ecrire 5;
-    sinon
-    ecrire a == 0 ;
-    finsi
-
-    si non(s == 50) alors
-    ecrire non(a != 0);
-    sinon
-    ecrire a != 0;
-    finsi
-
-    retourne s; fin
-
-lire a; //2
-lire b; //1
-
-ecrire lastboss(); //lastboss devrait écrire 191 avec a = 2 et b = 1
-
-ecrire yal2(); //qui marche comme yalTest2.yal
-
+ecrire a;
+a = 1;
+a = incremente();
+ecrire a;
 fin
