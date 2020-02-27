@@ -9,7 +9,7 @@ public class Retourner extends Instruction {
     private Expression exp;
     private int idRegion;
 
-    protected Retourner(Expression exp) {
+    public Retourner(Expression exp) {
         super(exp.getNoLigne());
         this.exp = exp;
     }
