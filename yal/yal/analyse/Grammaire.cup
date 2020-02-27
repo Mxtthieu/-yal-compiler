@@ -75,7 +75,7 @@ terminal String    IDF, CSTENTIERE, TYPE ;
    
 /* Non terminals used in the grammar section.  */
 
-non terminal Symbole DECL_FONCTION;
+non terminal Fonction DECL_FONCTION;
 non terminal Integer PARAMETRES;
 non terminal ArbreAbstrait PROG, START;
 non terminal BlocDInstructions LINST, LDECL;
@@ -243,8 +243,8 @@ EXP    ::=     CSTENTIERE:c
 
 DECL_FONCTION ::= FONCTION IDF:i PARAMETRES:p DEBUT LINST:li FIN
                {: TDS.getInstance().debutDeBloc();
-                  EntreeFonction entree = new EntreeFonction(i,p);
-                  SymboleFonction symbole = new SymboleFonction();
+                  EntreeFonc entree = new EntreeFonc(i,p);
+                  SymboleFonc symbole = new SymboleFonc();
                   RESULT = new Fonction(li, i, p, ileft + 1);
                   TDS.getInstance().finDeBloc();
                   TDS.getInstance().ajouter(entree, symbole, ileft + 1); :}

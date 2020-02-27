@@ -11,7 +11,7 @@ public class AppelFonction extends Expression{
     private String label;
     private String type;
 
-    protected AppelFonction(String idf, int nbLignes) {
+    public AppelFonction(String idf, int nbLignes) {
         super(nbLignes);
         this.idf = idf;
     }

@@ -13,9 +13,13 @@ public class TDS {
     private HashMap<Entree, Symbole> tab;
 
     private int ligne;
+    private int idRegion;
+    private int idBox;
 
     private TDS(){
         tab = new HashMap<>();
+        idRegion = -1;
+        idBox = -1;
     }
 
     public static TDS getInstance(){
@@ -43,19 +47,26 @@ public class TDS {
     }
 
     public int getIdRegion(){
-        return 1;
+        return idRegion;
     }
 
     public void debutDeBloc(){
-
+        idRegion++;
+        idBox++;
     }
 
     public void finDeBloc(){
-
+        idBox--;
     }
 
     public int sizeMemoryVar(){
         return tab.size() * 4;
     }
+
+    public int getIdBox(){
+        return idBox;
+    }
+
+
 
 }
