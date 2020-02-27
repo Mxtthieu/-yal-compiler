@@ -4,6 +4,7 @@ import yal.analyse.TDS;
 import yal.arbre.ArbreAbstrait;
 import yal.arbre.instructions.Instruction;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -46,5 +47,17 @@ public class BlocDInstructions extends ArbreAbstrait {
         return sb.toString() ;
 
     }
-    
+
+    public boolean isRetourne(){
+        boolean res = false;
+        for(Instruction i : inst){
+            res = i.isRetourne();
+        }
+        return res;
+    }
+
+
+    public ArrayList<Instruction> getInst(){
+        return inst;
+    }
 }

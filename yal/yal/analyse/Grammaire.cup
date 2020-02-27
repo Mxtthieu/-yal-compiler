@@ -94,12 +94,17 @@ precedence left MULTIPLICATION, DIVISION;
  
 start with PROG ;
 
-PROG    ::=     PROGRAMME  IDF  DEBUT  LINST:li  FIN
-                {: RESULT = li ; :}
+START   ::=     PROGRAMME
+                {: TDS.getInstance().debutDeBloc(); :}
+                ;
 
+PROG    ::=     START IDF DEBUT LDECL:ld LINST:li FIN
+                {: RESULT = new Main(ld, li, lileft + 1) ;
+                   TDS.getInstance().finDeBloc(); :}
         |
-                PROGRAMME  IDF  DEBUT  LDECL LINST:li  FIN
-                {: RESULT = li ; :}
+                START IDF DEBUT LINST:li FIN
+                {: RESULT = new Main(li, lileft + 1);
+                   TDS.getInstance().finDeBloc(); :}
                 ;
 
 

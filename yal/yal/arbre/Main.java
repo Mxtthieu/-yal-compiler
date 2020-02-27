@@ -1,6 +1,7 @@
 package yal.arbre;
 
 import yal.analyse.TDS;
+import yal.arbre.instructions.Instruction;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,12 @@ public class Main extends ArbreAbstrait {
         super(i);
         bloc = b;
     }
+
+    public Main(BlocDInstructions dec, BlocDInstructions inst, int i) {
+        super(i);
+        bloc = inst;
+    }
+
 
     @Override
     public void verifier(){
