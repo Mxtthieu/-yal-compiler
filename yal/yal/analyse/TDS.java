@@ -54,4 +54,8 @@ public class TDS {
 
     }
 
+    public int sizeMemoryVar(){
+        return tab.size() * 4;
+    }
+
 }
