@@ -28,14 +28,13 @@ public class TDS {
 
     public void ajouter(Entree e, Symbole s, int n){
         ligne = n;
-        if(tab.containsKey(e)){
+        if(tab.containsKey(e) /*&& !s.getType().equals("fonc")*/){
             throw new AnalyseSemantiqueException(ligne,"Double déclaration : " + e.toString());
         }
         tab.put(e,s);
     }
 
     public Symbole identifier(Entree e){
-
         if(!tab.containsKey(e)){
             throw new AnalyseSemantiqueException(ligne,"Non déclaré : " + e.toString());
         }
