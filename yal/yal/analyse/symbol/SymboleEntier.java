@@ -11,4 +11,14 @@ public class SymboleEntier extends Symbole {
     public String getType() {
         return "entier";
     }
+
+    @Override
+    public boolean isVar() {
+        return true;
+    }
+
+    @Override
+    public boolean isParam() {
+        return false;
+    }
 }

@@ -66,10 +66,11 @@ public class Main extends ArbreAbstrait {
         }
         sb.append("\n");
         sb.append(bloc.toMIPS());
+        sb.append(fin);
+        sb.append("\n");
         if(bloc2 != null) {
             sb.append(bloc2.toMIPS());
         }
-        sb.append(fin);
         return sb.toString() ;
     }
 

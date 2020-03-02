@@ -18,7 +18,17 @@ public class SymboleFonc extends Symbole {
 
     @Override
     public String getType() {
-        return "fonc";
+        return "entier";
+    }
+
+    @Override
+    public boolean isVar() {
+        return false;
+    }
+
+    @Override
+    public boolean isParam() {
+        return false;
     }
 
     public String getLabel(){

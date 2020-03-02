@@ -11,4 +11,14 @@ public class SymboleBool extends Symbole {
         return "bool";
     }
 
+    @Override
+    public boolean isVar() {
+        return true;
+    }
+
+    @Override
+    public boolean isParam() {
+        return false;
+    }
+
 }

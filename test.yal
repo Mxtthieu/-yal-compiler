@@ -5,11 +5,12 @@ entier a;
 
 fonction incremente() debut
 	a = a + 1;
+	ecrire a;
 	retourne a;
 fin
 
-ecrire a;
 a = 1;
+ecrire a;
 a = incremente();
 ecrire a;
 fin
