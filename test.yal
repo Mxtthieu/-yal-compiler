@@ -4,9 +4,7 @@ debut
 entier a;
 
 fonction incremente() debut
-	a = a + 1;
-	ecrire a;
-	retourne a;
+	retourne a + 1;
 fin
 
 a = 1;

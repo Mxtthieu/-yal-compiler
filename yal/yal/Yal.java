@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import yal.analyse.AnalyseurLexical;
 import yal.analyse.AnalyseurSyntaxique;
+import yal.analyse.TDS;
 import yal.arbre.ArbreAbstrait;
 import yal.exceptions.AnalyseException;
 
@@ -15,6 +16,8 @@ public class Yal {
         try {
             AnalyseurSyntaxique analyseur = new AnalyseurSyntaxique(new AnalyseurLexical(new FileReader(nomFichier)));
             ArbreAbstrait arbre = (ArbreAbstrait) analyseur.parse().value;
+
+            TDS.getInstance().setUp();
 
             arbre.verifier() ;
             System.out.println("COMPILATION OK") ;

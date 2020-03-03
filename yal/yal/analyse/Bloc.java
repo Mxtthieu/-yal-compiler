@@ -6,7 +6,9 @@ import yal.exceptions.AnalyseSemantiqueException;
 
 import javax.swing.*;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 public class Bloc {
 
@@ -110,4 +112,32 @@ public class Bloc {
         return tab.toString();
     }
 
+    public int parCount(){
+        int tmp = 0;
+        Set<Entree> keys = tab.keySet();
+        Iterator<Entree> iter = keys.iterator();
+        while (iter.hasNext()){
+            Entree e = iter.next();
+            Symbole s = tab.get(e);
+            if (s.isParam()){
+                tmp++;
+            }
+        }
+        return tmp;
+    }
+
+    public int varCount(){
+        int tmp = 0;
+        Set<Entree> keys = tab.keySet();
+        Iterator<Entree> iter = keys.iterator();
+
+        while(iter.hasNext()) {
+            Entree e = iter.next();
+            Symbole s = tab.get(e);
+            if(s.isVar()) {
+                tmp++;
+            }
+        }
+        return tmp;
+    }
 }
