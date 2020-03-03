@@ -5,10 +5,19 @@ import yal.arbre.expressions.Expression;
 
 public class Diviser extends ArithmetiqueBinaire {
 
+    /**
+     *
+     * @param exp1
+     * @param exp2
+     */
     public Diviser(Expression exp1, Expression exp2) {
         super(exp1, exp2);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toMIPS() {
         int compteur = FabriqueNumero.getInstance().getNumero();

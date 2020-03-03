@@ -1,14 +1,11 @@
 package yal.arbre;
 
 import yal.analyse.TDS;
-import yal.arbre.instructions.Instruction;
-
 import java.util.ArrayList;
 
 public class Main extends ArbreAbstrait {
 
     protected ArrayList<ArbreAbstrait> programme ;
-
     protected static String data = ".data\n\n" +
             "sautLigne: .asciiz \"\\n\"\n" +
             "vrai :     .asciiz \"vrai\"\n" +
@@ -23,19 +20,32 @@ public class Main extends ArbreAbstrait {
     private BlocDInstructions bloc;
     private BlocDInstructions bloc2;
 
+    /**
+     *
+     * @param b
+     * @param i
+     */
     public Main(BlocDInstructions b, int i) {
         super(i);
         bloc = b;
         bloc2 = null;
     }
 
+    /**
+     *
+     * @param dec
+     * @param inst
+     * @param i
+     */
     public Main(BlocDInstructions dec, BlocDInstructions inst, int i) {
         super(i);
         bloc = inst;
         bloc2 = dec;
     }
 
-
+    /**
+     *
+     */
     @Override
     public void verifier(){
         TDS.getInstance().debutDeBloc();
@@ -45,6 +55,10 @@ public class Main extends ArbreAbstrait {
         TDS.getInstance().finDeBloc();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toMIPS(){
         StringBuilder sb = new StringBuilder();

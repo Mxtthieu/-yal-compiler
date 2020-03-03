@@ -1,35 +1,40 @@
 package yal.arbre;
 
-import yal.analyse.TDS;
-import yal.arbre.ArbreAbstrait;
 import yal.arbre.instructions.Instruction;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-
-/**
- * 21 novembre 2018
- *
- * @author brigitte wrobel-dautcourt
- */
 
 public class BlocDInstructions extends ArbreAbstrait {
     protected ArrayList<Instruction> inst;
 
+    /**
+     *
+     * @param n
+     */
     public BlocDInstructions(int n) {
         super(n);
         inst = new ArrayList<>() ;
     }
 
+    /**
+     *
+     * @param a
+     */
     public void ajouter(Instruction a) {
         inst.add(a) ;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return inst.toString() ;
     }
 
+    /**
+     *
+     */
     @Override
     public void verifier() {
         for (Instruction i : inst) {
@@ -37,6 +42,10 @@ public class BlocDInstructions extends ArbreAbstrait {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
@@ -48,6 +57,10 @@ public class BlocDInstructions extends ArbreAbstrait {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isRetourne(){
         boolean res = false;
         for(Instruction i : inst){
@@ -56,7 +69,10 @@ public class BlocDInstructions extends ArbreAbstrait {
         return res;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public ArrayList<Instruction> getInst(){
         return inst;
     }

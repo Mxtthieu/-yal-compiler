@@ -3,10 +3,20 @@ package yal.arbre.expressions.binaire.operateur.arithmetique;
 import yal.arbre.expressions.Expression;
 
 public class Multiplier extends ArithmetiqueBinaire {
+
+    /**
+     *
+     * @param exp1
+     * @param exp2
+     */
     public Multiplier(Expression exp1, Expression exp2) {
         super(exp1, exp2);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toMIPS(){
         StringBuilder sb = new StringBuilder();

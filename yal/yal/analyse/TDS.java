@@ -10,7 +10,6 @@ public class TDS {
 
     private static final TDS instance = new TDS();
     private HashMap<Entree, Symbole> tab;
-
     private int ligne;
     private int idRegion;
     private int idBox;
@@ -18,6 +17,9 @@ public class TDS {
     private Bloc cur;
     private boolean synt;
 
+    /**
+     *
+     */
     private TDS(){
         tab = new HashMap<>();
         idRegion = -1;
@@ -27,36 +29,69 @@ public class TDS {
         synt = true;
     }
 
+    /**
+     *
+     * @return
+     */
     public static TDS getInstance(){
         return instance;
     }
 
+    /**
+     *
+     */
     public void setUp(){
         idRegion = -1;
         idBox = -1;
         synt = false;
     }
 
+    /**
+     *
+     * @param e
+     * @param s
+     * @param n
+     */
     public void ajouter(Entree e, Symbole s, int n){
         cur.ajouter(e, s, n);
     }
 
+    /**
+     *
+     * @param e
+     * @return
+     */
     public Symbole identifier(Entree e){
         return cur.identifier(e);
     }
 
+    /**
+     *
+     * @return
+     */
     public int TailleZoneVariable(){
         return cur.tailleTableVariable();
     }
 
+    /**
+     *
+     * @return
+     */
     public int tailleTableParam(){
         return cur.tailleTableParam();
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIdRegion(){
         return cur.getIdRegion();
     }
 
+    /**
+     *
+     */
     public void debutDeBloc(){
         idRegion++;
         idBox++;
@@ -80,33 +115,28 @@ public class TDS {
         }
     }
 
+    /**
+     *
+     */
     public void finDeBloc(){
         Bloc b = cur.getBlocPrecedent();
         cur = b;
         idBox--;
     }
 
+    /**
+     *
+     * @return
+     */
     public int sizeMemoryVar(){
         return tab.size() * 4;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIdBox(){
         return idBox;
-    }
-
-    public int idPrec() {
-        Bloc b = cur.getBlocPrecedent();
-        if(b != null){
-            return b.getIdRegion();
-        }
-        return -1;
-    }
-
-    public int varCount(){
-        return cur.varCount();
-    }
-
-    public int parCount(){
-        return cur.parCount();
     }
 }

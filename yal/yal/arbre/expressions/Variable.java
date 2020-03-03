@@ -11,11 +11,19 @@ public class Variable extends Expression {
     private String type;
     private int dep;
 
+    /**
+     *
+     * @param s
+     * @param n
+     */
     public Variable(String s, int n) {
         super(n);
         idf = s;
     }
 
+    /**
+     *
+     */
     @Override
     public void verifier()  {
         EntreeVar e = new EntreeVar(idf);
@@ -24,6 +32,10 @@ public class Variable extends Expression {
         type = s.getType();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toMIPS() {
         StringBuilder cst = new StringBuilder();
@@ -31,11 +43,19 @@ public class Variable extends Expression {
         return cst.toString();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return idf;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getType() {
         return type;

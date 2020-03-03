@@ -11,16 +11,28 @@ public class AppelFonction extends Expression{
     private String label;
     private String type;
 
+    /**
+     *
+     * @param idf
+     * @param nbLignes
+     */
     public AppelFonction(String idf, int nbLignes) {
         super(nbLignes);
         this.idf = idf;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getType() {
         return type;
     }
 
+    /**
+     *
+     */
     @Override
     public void verifier() {
         EntreeFonc e = new EntreeFonc(idf, 0);
@@ -35,6 +47,10 @@ public class AppelFonction extends Expression{
         type = s.getType();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();

@@ -5,10 +5,19 @@ import yal.exceptions.AnalyseSemantiqueException;
 
 public class Superieur extends Comparaison {
 
+    /**
+     *
+     * @param exp1
+     * @param exp2
+     */
     public Superieur (Expression exp1, Expression exp2) {
         super(exp1, exp2);
     }
 
+    /**
+     *
+     * @throws AnalyseSemantiqueException
+     */
     @Override
     public void verifier() throws AnalyseSemantiqueException {
         super.verifier();
@@ -19,6 +28,10 @@ public class Superieur extends Comparaison {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();

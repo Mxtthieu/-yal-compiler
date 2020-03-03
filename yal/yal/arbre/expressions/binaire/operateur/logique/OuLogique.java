@@ -7,13 +7,21 @@ public class OuLogique extends Logique{
     private Expression gauche;
     private Expression droite;
 
+    /**
+     *
+     * @param exp1
+     * @param exp2
+     */
     public OuLogique(Expression exp1, Expression exp2) {
         super(exp1, exp2);
         gauche = exp1;
         droite = exp2;
     }
 
-
+    /**
+     *
+     * @return
+     */
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();

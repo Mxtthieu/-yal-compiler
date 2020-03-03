@@ -7,11 +7,18 @@ public class Negation extends Unaire{
 
     private Expression exp;
 
+    /**
+     *
+     * @param exp
+     */
     public Negation(Expression exp) {
         super(exp);
         this.exp = exp;
     }
 
+    /**
+     *
+     */
     @Override
     public void verifier() {
         super.verifier();
@@ -22,6 +29,10 @@ public class Negation extends Unaire{
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
@@ -31,6 +42,10 @@ public class Negation extends Unaire{
         return sb.toString();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getType() {
         return "entier";

@@ -13,6 +13,13 @@ public class Fonction extends Instruction {
     private int memoryVar;
     private BlocDInstructions bloc;
 
+    /**
+     *
+     * @param b
+     * @param idf
+     * @param nbParam
+     * @param nbLignes
+     */
     public Fonction(BlocDInstructions b, String idf, int nbParam, int nbLignes){
         super(nbLignes);
         this.idf = idf;
@@ -21,13 +28,20 @@ public class Fonction extends Instruction {
         memoryVar = TDS.getInstance().sizeMemoryVar();
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isRetourner(){
         return bloc.isRetourne();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toMIPS() {
-
         StringBuilder sb = new StringBuilder();
         sb.append("    #Definition de fonction\n");
         sb.append(label+":\n");
@@ -43,6 +57,9 @@ public class Fonction extends Instruction {
         return sb.toString();
     }
 
+    /**
+     *
+     */
     @Override
     public void verifier() {
         EntreeFonc e = new EntreeFonc(idf, 0);

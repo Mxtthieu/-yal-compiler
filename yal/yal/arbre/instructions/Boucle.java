@@ -10,12 +10,20 @@ public class Boucle extends Instruction {
     private Expression exp;
     private BlocDInstructions bInst;
 
+    /**
+     *
+     * @param e
+     * @param b
+     */
     public Boucle(Expression e, BlocDInstructions b) {
         super(e.getNoLigne());
         exp = e;
         bInst = b;
     }
 
+    /**
+     *
+     */
     @Override
     public void verifier() {
         if (!this.exp.getType().equals("bool")) {
@@ -26,6 +34,10 @@ public class Boucle extends Instruction {
         bInst.verifier();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toMIPS() {
         int compteur = FabriqueNumero.getInstance().getNumero();

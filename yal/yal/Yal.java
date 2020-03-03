@@ -11,7 +11,11 @@ import yal.arbre.ArbreAbstrait;
 import yal.exceptions.AnalyseException;
 
 public class Yal {
-    
+
+    /**
+     *
+     * @param nomFichier
+     */
     public Yal(String nomFichier) {
         try {
             AnalyseurSyntaxique analyseur = new AnalyseurSyntaxique(new AnalyseurLexical(new FileReader(nomFichier)));
@@ -38,6 +42,10 @@ public class Yal {
         }
     }
 
+    /**
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         if (args.length != 1) {
             System.err.println("Nombre incorrect d'arguments") ;

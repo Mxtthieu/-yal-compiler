@@ -6,10 +6,19 @@ import yal.exceptions.AnalyseSemantiqueException;
 
 public class Comparaison extends Binaire {
 
+    /**
+     *
+     * @param exp1
+     * @param exp2
+     */
     public Comparaison (Expression exp1, Expression exp2) {
         super(exp1, exp2);
     }
 
+    /**
+     *
+     * @throws AnalyseSemantiqueException
+     */
     @Override
     public void verifier()throws AnalyseSemantiqueException{
         super.verifier();
@@ -20,11 +29,19 @@ public class Comparaison extends Binaire {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toMIPS(){
         return super.toMIPS();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getType() {
         return "bool";

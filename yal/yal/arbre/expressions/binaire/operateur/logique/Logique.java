@@ -9,6 +9,11 @@ public class Logique extends Binaire {
     private Expression gauche;
     private Expression droite;
 
+    /**
+     *
+     * @param exp1
+     * @param exp2
+     */
     public Logique(Expression exp1, Expression exp2) {
         super(exp1, exp2);
         gauche = exp1;
@@ -16,6 +21,10 @@ public class Logique extends Binaire {
 
     }
 
+    /**
+     *
+     * @throws AnalyseSemantiqueException
+     */
     @Override
     public void verifier()throws AnalyseSemantiqueException{
         StringBuilder sb = new StringBuilder();
@@ -34,12 +43,19 @@ public class Logique extends Binaire {
 
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toMIPS() {
         return super.toMIPS();
     }
 
-
+    /**
+     *
+     * @return
+     */
     @Override
     public String getType() {
         return "bool";

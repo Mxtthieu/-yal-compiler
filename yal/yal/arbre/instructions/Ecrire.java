@@ -7,17 +7,29 @@ public class Ecrire extends Instruction {
 
     protected Expression exp ;
 
+    /**
+     *
+     * @param e
+     * @param n
+     */
     public Ecrire (Expression e, int n) {
         super(n) ;
         exp = e ;
     }
 
+    /**
+     *
+     */
     @Override
     public void verifier() {
         exp.verifier();
 
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toMIPS() {
         int compteur = FabriqueNumero.getInstance().getNumero();

@@ -12,12 +12,20 @@ public class Affectation extends Instruction{
     private Expression exp;
     private int dep;
 
+    /**
+     *
+     * @param s
+     * @param e
+     */
     public Affectation(String s, Expression e) {
         super(e.getNoLigne());
         idf = s;
         exp = e;
     }
 
+    /**
+     *
+     */
     @Override
     public void verifier() {
         EntreeVar e = new EntreeVar(idf);
@@ -26,6 +34,10 @@ public class Affectation extends Instruction{
         exp.verifier();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();

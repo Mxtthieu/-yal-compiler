@@ -11,6 +11,10 @@ public class Condition extends Instruction{
     private BlocDInstructions ctrue;
     private BlocDInstructions cfalse;
 
+    /**
+     *
+     * @param e
+     */
     public Condition(Expression e) {
         super(e.getNoLigne());
         exp = e;
@@ -19,6 +23,12 @@ public class Condition extends Instruction{
 
     }
 
+    /**
+     *
+     * @param e
+     * @param b
+     * @param typeBloc
+     */
     public Condition(Expression e, BlocDInstructions b, int typeBloc) {
         super(e.getNoLigne());
         exp = e;
@@ -31,6 +41,12 @@ public class Condition extends Instruction{
         }
     }
 
+    /**
+     *
+     * @param e
+     * @param b
+     * @param b2
+     */
     public Condition(Expression e, BlocDInstructions b, BlocDInstructions b2){
         super(e.getNoLigne());
         exp = e;
@@ -38,6 +54,9 @@ public class Condition extends Instruction{
         cfalse = b2;
     }
 
+    /**
+     *
+     */
     @Override
     public void verifier() {
         exp.verifier();
@@ -50,6 +69,10 @@ public class Condition extends Instruction{
         cfalse.verifier();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toMIPS() {
         int compteur = FabriqueNumero.getInstance().getNumero();

@@ -6,10 +6,19 @@ import yal.exceptions.AnalyseSemantiqueException;
 
 public class Inferieur extends Comparaison {
 
+    /**
+     *
+     * @param exp1
+     * @param exp2
+     */
     public Inferieur(Expression exp1, Expression exp2) {
         super(exp1, exp2);
     }
 
+    /**
+     *
+     * @throws AnalyseSemantiqueException
+     */
     @Override
     public void verifier() throws AnalyseSemantiqueException {
         super.verifier();
@@ -20,6 +29,10 @@ public class Inferieur extends Comparaison {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();

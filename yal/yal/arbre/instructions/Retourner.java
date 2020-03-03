@@ -9,11 +9,18 @@ public class Retourner extends Instruction {
     private Expression exp;
     private int idRegion;
 
+    /**
+     *
+     * @param exp
+     */
     public Retourner(Expression exp) {
         super(exp.getNoLigne());
         this.exp = exp;
     }
 
+    /**
+     *
+     */
     @Override
     public void verifier() {
         exp.verifier();
@@ -21,13 +28,21 @@ public class Retourner extends Instruction {
             throw new AnalyseSemantiqueException(getNoLigne(), "erreur type :\n retourne " + exp + "\n une fonction doit retourner un entier");
         }
         idRegion = TDS.getInstance().getIdRegion();
-
     }
+
+    /**
+     *
+     * @return
+     */
     @Override
     public boolean isRetourner(){
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
@@ -48,8 +63,8 @@ public class Retourner extends Instruction {
             sb.append("    #sw $v0, 4($sp)\n");
             sb.append("    #jr $ra\n");
         }else{
-            sb.append("#Direction fin du programme \n");
-            sb.append("j fin\n\n");
+            sb.append("    #Direction fin du programme \n");
+            sb.append("    j fin\n\n");
         }
         return sb.toString();
     }
