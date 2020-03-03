@@ -69,7 +69,7 @@ public class Main extends ArbreAbstrait {
         sb.append("    sw $t8, 0($sp)\n");
         sb.append("    addi $sp, $sp, -4\n\n");
         sb.append("    move $s7, $sp\n");
-        sb.append("    #On réserve la place pour " + taille / -4 + " variables\n");
+        sb.append("    #On réserve la place pour " + taille /4 + " variables\n");
         sb.append("    addi $sp, $sp, " + taille + "\n");
         if (taille != 0) {
             sb.append("\n");

@@ -54,7 +54,7 @@ public class Bloc {
     public void ajouter(Entree e, Symbole s, int noLigne){
 
         if(tab.containsKey(e)){
-            throw new AnalyseSemantiqueException(noLigne,"double déclaration");
+            throw new AnalyseSemantiqueException(noLigne,"Double déclaration");
         }
         tab.put(e,s);
     }
@@ -66,15 +66,15 @@ public class Bloc {
      */
     public Symbole identifier(Entree e){
 
-        Symbole temp = tab.get(e);
+        Symbole tmp = tab.get(e);
 
-        if(temp == null) {
+        if(tmp == null) {
             if(blocPrecedent != null) {
-                temp = blocPrecedent.identifier(e);
+                tmp = blocPrecedent.identifier(e);
             }
         }
 
-        return temp;
+        return tmp;
     }
 
     /**
@@ -102,14 +102,14 @@ public class Bloc {
      * @return
      */
     public int tailleTableVariable() {
-        int temp = 0;
+        int tmp = 0;
         for(Map.Entry<Entree, Symbole> map : tab.entrySet() ) {
             Symbole s = map.getValue();
             if(s.isVar()) {
-                temp += s.getSpace();
+                tmp -= 4;
             }
         }
-        return temp;
+        return tmp;
     }
 
     /**
@@ -117,17 +117,17 @@ public class Bloc {
      * @return
      */
     public int tailleTableParam() {
-        int temp = 0;
+        int tmp = 0;
 
         for(Map.Entry<Entree, Symbole> map : tab.entrySet() ) {
             Symbole s = map.getValue();
 
             if(s.isParam()) {
 
-                temp += s.getSpace();
+                tmp += 4;
             }
         }
-        return temp;
+        return tmp;
     }
 
     /**

@@ -80,12 +80,12 @@ public class Condition extends Instruction{
         sb.append("#Condition \n");
         sb.append("si"+ compteur +" :\n");
         sb.append(exp.toMIPS());
-        sb.append("    beqz $v0, sinon"+ compteur +" :\n");
+        sb.append("    beqz $v0, sinon"+ compteur +"\n");
         sb.append("alors"+ compteur +" :\n");
-        sb.append(ctrue.toMIPS());
-        sb.append("j fin"+ compteur +" \n");
-        sb.append("sinon"+ compteur +" :\n");
         sb.append(cfalse.toMIPS());
+        sb.append("j finsi"+ compteur +" \n");
+        sb.append("sinon"+ compteur +" :\n");
+        sb.append(ctrue.toMIPS());
         sb.append("finsi"+ compteur + ":\n");
         return sb.toString();
     }

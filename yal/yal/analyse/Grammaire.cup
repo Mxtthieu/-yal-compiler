@@ -248,6 +248,14 @@ DECL_FONCTION ::= FONCTION IDF:i PARAMETRES:p DEBUT LINST:li FIN
                   RESULT = new Fonction(li, i, p, ileft + 1);
                   TDS.getInstance().finDeBloc();
                   TDS.getInstance().ajouter(entree, symbole, ileft + 1); :}
+               |
+                  FONCTION IDF:i PARAMETRES:p DEBUT LDECL:ld LINST:li FIN
+                  {: TDS.getInstance().debutDeBloc();
+                     EntreeFonc entree = new EntreeFonc(i,p);
+                     SymboleFonc symbole = new SymboleFonc();
+                     RESULT = new Fonction(li, ld, i, p, ileft + 1);
+                     TDS.getInstance().finDeBloc();
+                     TDS.getInstance().ajouter(entree, symbole, ileft + 1); :}
                ;
  
 

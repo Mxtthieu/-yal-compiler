@@ -12,6 +12,7 @@ public class Fonction extends Instruction {
     private int idBloc;
     private int memoryVar;
     private BlocDInstructions bloc;
+    private BlocDInstructions bloc2;
 
     /**
      *
@@ -28,6 +29,14 @@ public class Fonction extends Instruction {
         memoryVar = TDS.getInstance().sizeMemoryVar();
     }
 
+    public Fonction(BlocDInstructions b, BlocDInstructions b2, String idf, int nbParam, int nbLignes){
+        super(nbLignes);
+        this.idf = idf;
+        bloc = b;
+        bloc2 = b2;
+        idBloc = TDS.getInstance().getIdRegion();
+        memoryVar = TDS.getInstance().sizeMemoryVar();
+    }
     /**
      *
      * @return
@@ -49,10 +58,12 @@ public class Fonction extends Instruction {
         sb.append("    add $sp, $sp, -4\n");
         sb.append("    sw $s7, 0($sp)\n");
         sb.append("    add $sp, $sp, -4\n");
-        sb.append("    li $t8,"+idBloc+"\n");
+        sb.append("    li $t8, "+idBloc+"\n");
         sb.append("    sw $t8, 0($sp)\n");
         sb.append("    add $sp, $sp, -4\n");
-        sb.append("    move $s7, $sp\n");
+        if (bloc2!=null){
+            sb.append(bloc2.toMIPS());
+        }
         sb.append(bloc.toMIPS());
         return sb.toString();
     }

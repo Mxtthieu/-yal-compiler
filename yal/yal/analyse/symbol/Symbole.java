@@ -7,7 +7,6 @@ public abstract class Symbole {
     protected int dep;
     private int idRegion;
     private int idBox;
-
     /**
      *
      */
@@ -54,14 +53,6 @@ public abstract class Symbole {
      * @return
      */
     public abstract boolean isVar();
-
-    /**
-     *
-     * @return
-     */
-    public int getSpace() {
-        return 0;
-    }
 
     /**
      *

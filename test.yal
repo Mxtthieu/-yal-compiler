@@ -1,14 +1,28 @@
 programme oklm
 debut
 
+// Affichage final attendu :
+// 1
+// 1
+// 2
+// 2
+
 entier a;
 
 fonction incremente() debut
+    entier c;
+    c = 1;
+    ecrire c;
 	retourne a + 1;
 fin
 
+fonction retourne2() debut
+    retourne 2;
+fin
+
 a = 1;
-ecrire a;
+ecrire a; // 1
 a = incremente();
-ecrire a;
+ecrire a;           // 2
+ecrire retourne2(); // 2
 fin

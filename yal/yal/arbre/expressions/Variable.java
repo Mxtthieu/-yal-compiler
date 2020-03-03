@@ -4,6 +4,8 @@ import yal.analyse.TDS;
 import yal.analyse.entre.EntreeVar;
 import yal.analyse.symbol.Symbole;
 import yal.analyse.symbol.SymboleEntier;
+import yal.exceptions.AnalyseSemantiqueException;
+import yal.exceptions.AnalyseSyntaxiqueException;
 
 public class Variable extends Expression {
 
@@ -28,8 +30,12 @@ public class Variable extends Expression {
     public void verifier()  {
         EntreeVar e = new EntreeVar(idf);
         Symbole s = TDS.getInstance().identifier(e);
-        dep = s.getDep();
-        type = s.getType();
+        if (s != null) {
+            this.dep = s.getDep();
+            type = s.getType();
+        } else {
+            throw new AnalyseSyntaxiqueException("Variable "+idf+" non définie");
+        }
     }
 
     /**

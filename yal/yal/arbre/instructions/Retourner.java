@@ -51,17 +51,17 @@ public class Retourner extends Instruction {
         sb.append(exp.toMIPS() + "\n");
         if(idRegion > 0){
             sb.append("    #Deplacement dans la base\n");
-            sb.append("    #lw $7, 8($sp)\n");
+            sb.append("    lw $7, 8($sp)\n");
             sb.append("    #Depile l'id de la region\n");
             sb.append("    add $sp, $sp, 4\n\n");
             sb.append("    #Depile la chaine dynamique \n");
             sb.append("    add $sp, $sp, 4\n");
-            sb.append("    #Depile l'adresse de retourn \n");
+            sb.append("    #Depile l'adresse de retourne \n");
             sb.append("    add $sp, $sp, 4\n");
-            sb.append("    #lw $ra, 0($sp)\n");
-            sb.append("    #Enregistre la valeur calculer dans $v0\n");
-            sb.append("    #sw $v0, 4($sp)\n");
-            sb.append("    #jr $ra\n");
+            sb.append("    lw $ra, 0($sp)\n");
+            sb.append("    #Enregistre la valeur calculée dans $v0\n");
+            sb.append("    sw $v0, 4($sp)\n");
+            sb.append("    jr $ra\n");
         }else{
             sb.append("    #Direction fin du programme \n");
             sb.append("    j fin\n\n");

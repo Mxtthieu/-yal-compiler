@@ -129,7 +129,7 @@ public class TDS {
      * @return
      */
     public int sizeMemoryVar(){
-        return tab.size() * 4;
+        return -tab.size() * 4;
     }
 
     /**

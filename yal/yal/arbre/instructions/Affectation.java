@@ -5,6 +5,7 @@ import yal.analyse.entre.EntreeVar;
 import yal.analyse.symbol.Symbole;
 import yal.arbre.expressions.Expression;
 import yal.exceptions.AnalyseSemantiqueException;
+import yal.exceptions.AnalyseSyntaxiqueException;
 
 public class Affectation extends Instruction{
 
@@ -30,8 +31,12 @@ public class Affectation extends Instruction{
     public void verifier() {
         EntreeVar e = new EntreeVar(idf);
         Symbole s = TDS.getInstance().identifier(e);
-        this.dep = s.getDep();
-        exp.verifier();
+        if (s != null) {
+            this.dep = s.getDep();
+            exp.verifier();
+        } else {
+            throw new AnalyseSyntaxiqueException("Variable "+idf+" non définie");
+        }
     }
 
     /**
