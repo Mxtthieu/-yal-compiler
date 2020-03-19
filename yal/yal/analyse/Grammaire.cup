@@ -67,22 +67,29 @@ parser code {:
    
 /* Terminals (tokens returned by the scanner).  */
 
-terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, EGAL, LIRE, FONCTION, RETOUR ;
+terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, POINT, ECRIRE, EGAL, LIRE, FONCTION, RETOUR, VIRGULE, LONGUEUR ;
 terminal Symbol    SI, ALORS, SINON, FINSI, TANTQUE, REPETER, FINTANTQUE ;
 terminal Symbol    PLUS, MOINS, MULTIPLICATION, DIVISION, PAROUVR, PARFER ;
 terminal Symbol    EGALITE, DIFFERENT, INFERIEUR, SUPERIEUR, ET, OU, NON ;
 terminal String    IDF, CSTENTIERE, TYPE ;
+
    
 /* Non terminals used in the grammar section.  */
 
+
 non terminal Fonction ;
-non terminal Integer PARAMETRES;
-non terminal ArbreAbstrait PROG, START;
+non terminal Integer PARAMETRES, NB_PARAM, PARAM;
+non terminal ArbreAbstrait PROG, START, START_FONCTION;
 non terminal BlocDInstructions LINST, LDECL;
 non terminal Expression EXP, OPER ;
+non terminal ArrayList<Instruction> LDECLFONCTION ;
+non terminal ArrayList<Expression> PAR_EFF ;
 non terminal Instruction INST, DECL, DECL_VAR, AFFECTATION, ECRITURE, LECTURE, BOUCLE, CONDITION, RETOURNE, DECL_FONCTION ;
 
+
 /* Precedences */
+
+
 precedence left OU;
 precedence left ET;
 precedence left NON;
@@ -137,6 +144,12 @@ INST    ::=     AFFECTATION:a
         |
                 RETOURNE:r
                 {: RESULT = r ; :}
+        |
+                IDF:i PAROUVR PARFER
+                {: RESULT = new AppelFonction(i, ileft + 1); :}
+        |
+                IDF:i PAROUVR PAR_EFF:pe PARFER
+                {: RESULT = new AppelFonction(i, ileft + 1, pe); :}
                 ;
 
 LDECL   ::=     LDECL:ld  DECL:d
@@ -239,9 +252,12 @@ EXP    ::=     CSTENTIERE:c
         |
                IDF:i PAROUVR PARFER
                {: RESULT = new AppelFonction(i, ileft + 1); :}
+        |
+               IDF:i POINT LONGUEUR
+               {: RESULT = new Longueur(i, ileft+1); :}
                ;
 
-DECL_FONCTION ::= FONCTION IDF:i PARAMETRES:p DEBUT LINST:li FIN
+DECL_FONCTION ::= START_FONCTION IDF:i PARAMETRES:p DEBUT LINST:li FIN
                {: TDS.getInstance().debutDeBloc();
                   EntreeFonc entree = new EntreeFonc(i,p);
                   SymboleFonc symbole = new SymboleFonc();
@@ -249,7 +265,7 @@ DECL_FONCTION ::= FONCTION IDF:i PARAMETRES:p DEBUT LINST:li FIN
                   TDS.getInstance().finDeBloc();
                   TDS.getInstance().ajouter(entree, symbole, ileft + 1); :}
                |
-                  FONCTION IDF:i PARAMETRES:p DEBUT LDECL:ld LINST:li FIN
+                  START_FONCTION IDF:i PARAMETRES:p DEBUT LDECL:ld LINST:li FIN
                   {: TDS.getInstance().debutDeBloc();
                      EntreeFonc entree = new EntreeFonc(i,p);
                      SymboleFonc symbole = new SymboleFonc();
@@ -261,8 +277,48 @@ DECL_FONCTION ::= FONCTION IDF:i PARAMETRES:p DEBUT LINST:li FIN
 
 PARAMETRES ::=  PAROUVR PARFER
                {: RESULT = 0; :}
+           |
+                PAROUVR NB_PARAM:p PARFER
+               {: RESULT = p; :}
                ;
+
+NB_PARAM   ::=  PARAM POINTVIRGULE NB_PARAM:p
+                {: RESULT = p + 1; :}
+           |
+                PARAM
+                {: RESULT = 1; :}
+                ;
+
+PARAM      ::=  TYPE:t IDF:i
+                {: EntreeVar e = new EntreeVar(i);
+                   SymboleParam s = new SymboleParam();
+                   TDS.getInstance().ajouter(e, s, tleft + 1); :}
+                ;
 
 RETOURNE ::=    RETOUR EXP:e POINTVIRGULE
                 {: RESULT = new Retourner(e); :}
+                ;
+
+LDECLFONCTION ::=   LDECLFONCTION:lf DECL_VAR:d
+                    {: if(d != null) { lf.add(d); }
+                       RESULT = lf; :}
+               |
+                    DECL_VAR:d
+                    {: ArrayList<Instruction> lf = new ArrayList<Instruction>(dleft + 1);
+                       if(d != null) { lf.add(d); }
+                       RESULT = lf; :}
+                    ;
+
+START_FONCTION ::= FONCTION
+                   {: TDS.getInstance().debutDeBloc(); :}
+                   ;
+
+PAR_EFF ::=     PAR_EFF:pe VIRGULE EXP:e
+                {: pe.add(e);
+                   RESULT = pe; :}
+        |
+                EXP:e
+                {: ArrayList<Expression> pe = new ArrayList<>();
+                   pe.add(e);
+                   RESULT = pe; :}
                 ;

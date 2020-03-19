@@ -5,6 +5,7 @@ import java.util.Objects;
 public abstract class Entree {
 
     private String idf;
+    private int nbParam;
 
     /**
      *
@@ -12,6 +13,17 @@ public abstract class Entree {
      */
     public Entree(String s){
         this.idf = s;
+        this.nbParam = 0;
+    }
+
+    /**
+     *
+     * @param s
+     * @param nbParam
+     */
+    public Entree(String s, int nbParam){
+        this.idf = s;
+        this.nbParam = nbParam;
     }
 
     /**
@@ -37,7 +49,7 @@ public abstract class Entree {
             return false;
         }
         Entree entree = (Entree) o;
-        return Objects.equals(idf, entree.idf);
+        return nbParam == entree.nbParam && Objects.equals(idf, entree.idf);
     }
 
     /**
