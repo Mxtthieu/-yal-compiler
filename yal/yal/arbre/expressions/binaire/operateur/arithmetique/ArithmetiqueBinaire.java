@@ -23,7 +23,6 @@ public class ArithmetiqueBinaire extends Binaire {
     public void verifier() throws AnalyseSemantiqueException {
         super.verifier();
         StringBuilder sb = new StringBuilder();
-        System.out.println(gauche);
         if (!gauche.getType().equals("entier") && (!droite.getType().equals("entier"))){
             sb.append("Erreur de type : Les deux opérandes ne sont pas des entiers");
             throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());
