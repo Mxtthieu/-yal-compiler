@@ -3,13 +3,14 @@ debut
 
 entier a;
 entier c;
+entier b;
 
-fonction test(x, b) debut
+fonction test(entier x; entier b) debut
 	retourne x + b;
 fin
 
 a = 1;
 c = 2;
-test(a, c);
+b = test(a, c);
 ecrire test(6, 2);
 fin

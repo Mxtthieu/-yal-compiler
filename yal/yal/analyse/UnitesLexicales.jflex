@@ -75,6 +75,7 @@ commentaire = [/][/].*
 "!="                   { return symbol(CodesLexicaux.DIFFERENT); }
 
 ";"                    { return symbol(CodesLexicaux.POINTVIRGULE); }
+","                    { return symbol(CodesLexicaux.VIRGULE); }
 
 "et"                   { return symbol(CodesLexicaux.ET); }
 "ou"                   { return symbol(CodesLexicaux.OU); }
