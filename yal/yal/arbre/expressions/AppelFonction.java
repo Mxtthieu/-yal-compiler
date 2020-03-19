@@ -52,7 +52,7 @@ public class AppelFonction extends Expression{
         SymboleFonc s = (SymboleFonc) TDS.getInstance().identifier(e);
         if (s == null) {
             StringBuilder sb = new StringBuilder();
-            sb.append("Pas de déclaration de :");
+            sb.append("Pas de déclaration de : ");
             sb.append(idf + "()");
             throw new AnalyseSemantiqueException(getNoLigne(), sb.toString());
         }
