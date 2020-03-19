@@ -29,4 +29,8 @@ public class SymboleParam extends Symbole {
     public boolean isParam() {
         return true;
     }
+
+    public String getType() {
+        return "entier";
+    }
 }

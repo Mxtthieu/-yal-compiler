@@ -23,17 +23,16 @@ public class ArithmetiqueBinaire extends Binaire {
     public void verifier() throws AnalyseSemantiqueException {
         super.verifier();
         StringBuilder sb = new StringBuilder();
-        System.out.println("gauche : " + gauche.getClass());
-        System.out.println("droite : " + droite.getClass());
-        if (!gauche.getType().equals("entier") && (!droite.getType().equals("entier"))) {
+        System.out.println(gauche);
+        if (!gauche.getType().equals("entier") && (!droite.getType().equals("entier"))){
             sb.append("Erreur de type : Les deux opérandes ne sont pas des entiers");
-            throw new AnalyseSemantiqueException(getNoLigne(), sb.toString());
+            throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());
         } else if (!gauche.getType().equals("entier")) {
             sb.append("Erreur de type : L'opérande de gauche n'est pas entier");
-            throw new AnalyseSemantiqueException(getNoLigne(), sb.toString());
+            throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());
         } else if (!droite.getType().equals("entier")) {
             sb.append("Erreur de type : L'opérande de droite n'est pas entier");
-            throw new AnalyseSemantiqueException(getNoLigne(), sb.toString());
+            throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());
         }
     }
 
