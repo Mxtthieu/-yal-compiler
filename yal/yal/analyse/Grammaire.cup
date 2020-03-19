@@ -144,12 +144,6 @@ INST    ::=     AFFECTATION:a
         |
                 RETOURNE:r
                 {: RESULT = r ; :}
-        |
-                IDF:i PAROUVR PARFER
-                {: RESULT = new AppelFonction(i, ileft + 1); :}
-        |
-                IDF:i PAROUVR PAR_EFF:pe PARFER
-                {: RESULT = new AppelFonction(i, ileft + 1, pe); :}
                 ;
 
 LDECL   ::=     LDECL:ld  DECL:d
@@ -255,6 +249,9 @@ EXP    ::=     CSTENTIERE:c
         |
                IDF:i POINT LONGUEUR
                {: RESULT = new Longueur(i, ileft+1); :}
+        |
+                IDF:i PAROUVR PAR_EFF:pe PARFER
+                {: RESULT = new AppelFonction(i, ileft + 1, pe); :}
                ;
 
 DECL_FONCTION ::= START_FONCTION IDF:i PARAMETRES:p DEBUT LINST:li FIN

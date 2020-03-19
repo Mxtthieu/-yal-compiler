@@ -20,4 +20,12 @@ public abstract class Instruction extends ArbreAbstrait {
         return false;
     }
 
+
+    /**
+     *
+     * @return
+     */
+    public boolean isTab(){
+        return false;
+    }
 }

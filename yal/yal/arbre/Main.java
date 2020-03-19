@@ -1,6 +1,8 @@
 package yal.arbre;
 
 import yal.analyse.TDS;
+import yal.arbre.instructions.Instruction;
+
 import java.util.ArrayList;
 
 public class Main extends ArbreAbstrait {
@@ -17,8 +19,10 @@ public class Main extends ArbreAbstrait {
             "    li $v0, 10\n" +
             "    syscall\n";
     private int taille;
-    private BlocDInstructions bloc;
-    private BlocDInstructions bloc2;
+    private BlocDInstructions inst;
+    private BlocDInstructions fcts;
+    private BlocDInstructions tab;
+
 
     /**
      *
@@ -27,20 +31,30 @@ public class Main extends ArbreAbstrait {
      */
     public Main(BlocDInstructions b, int i) {
         super(i);
-        bloc = b;
-        bloc2 = null;
+        inst = b;
+        fcts = new BlocDInstructions(i + 1);
+        tab = new BlocDInstructions(i + 1);
     }
 
     /**
      *
-     * @param dec
-     * @param inst
+     * @param b
+     * @param b2
      * @param i
      */
-    public Main(BlocDInstructions dec, BlocDInstructions inst, int i) {
+    public Main(BlocDInstructions b, BlocDInstructions b2, int i) {
         super(i);
-        bloc = inst;
-        bloc2 = dec;
+        inst = b2;
+        fcts = new BlocDInstructions(i + 1);
+        tab = new BlocDInstructions(i + 1);
+        for(int j = 0; j < b.inst.size(); j++){
+            Instruction decl = b.inst.get(j);
+            if (decl.isTab()){
+                tab.ajouter(decl);
+            } else {
+                fcts.ajouter(decl);
+            }
+        }
     }
 
     /**
@@ -50,8 +64,8 @@ public class Main extends ArbreAbstrait {
     public void verifier(){
         TDS.getInstance().debutDeBloc();
         taille = TDS.getInstance().TailleZoneVariable();
-        bloc.verifier();
-        bloc2.verifier();
+        inst.verifier();
+        fcts.verifier();
         TDS.getInstance().finDeBloc();
     }
 
@@ -79,11 +93,11 @@ public class Main extends ArbreAbstrait {
             }
         }
         sb.append("\n");
-        sb.append(bloc.toMIPS());
+        sb.append(inst.toMIPS());
         sb.append(fin);
         sb.append("\n");
-        if(bloc2 != null) {
-            sb.append(bloc2.toMIPS());
+        if(fcts != null) {
+            sb.append(fcts.toMIPS());
         }
         return sb.toString() ;
     }
