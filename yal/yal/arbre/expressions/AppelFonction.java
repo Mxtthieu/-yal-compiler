@@ -5,11 +5,15 @@ import yal.analyse.entre.EntreeFonc;
 import yal.analyse.symbol.SymboleFonc;
 import yal.exceptions.AnalyseSemantiqueException;
 
+import java.util.ArrayList;
+
 public class AppelFonction extends Expression{
 
     private String idf;
     private String label;
     private String type;
+    private int nbParam;
+    private ArrayList<Expression> param;
 
     /**
      *
@@ -19,6 +23,16 @@ public class AppelFonction extends Expression{
     public AppelFonction(String idf, int nbLignes) {
         super(nbLignes);
         this.idf = idf;
+        this.nbParam = 0;
+        this.param = new ArrayList<>();
+    }
+
+
+    public AppelFonction(String id, int noLigne, ArrayList<Expression> parameters){
+        super(noLigne);
+        idf = id;
+        this.nbParam = parameters.size();
+        this.param = parameters;
     }
 
     /**
@@ -37,14 +51,17 @@ public class AppelFonction extends Expression{
     public void verifier() {
         EntreeFonc e = new EntreeFonc(idf, 0);
         SymboleFonc s = (SymboleFonc) TDS.getInstance().identifier(e);
-        if (s == null){
+        if (s == null) {
             StringBuilder sb = new StringBuilder();
             sb.append("Pas de déclaration de :");
-            sb.append(idf+"()");
+            sb.append(idf + "()");
             throw new AnalyseSemantiqueException(getNoLigne(), sb.toString());
         }
         label = s.getLabel();
         type = s.getType();
+        for(int i = 0; i<param.size(); i++) {
+            param.get(i).verifier();
+        }
     }
 
     /**
@@ -55,7 +72,13 @@ public class AppelFonction extends Expression{
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
         sb.append("    #Appel de fonction\n");
-        sb.append("    add $sp, $sp, -4\n");
+        sb.append("    add $sp, $sp,-"+this.nbParam*4+"\n");
+        for(int i = 0; i < nbParam; i++){
+            Expression param = realParam.get(i);
+            mips += param.toMIPS() + "sw $v0, " + i*4 + "($sp)\n" ;
+        }
+
+
         sb.append("    jal "+label+"\n");
         sb.append("    add $sp, $sp, 4\n");
         sb.append("    lw $v0, 0($sp)\n");
