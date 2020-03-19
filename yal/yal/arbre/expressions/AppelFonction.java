@@ -27,7 +27,6 @@ public class AppelFonction extends Expression{
         this.param = new ArrayList<>();
     }
 
-
     public AppelFonction(String id, int noLigne, ArrayList<Expression> parameters){
         super(noLigne);
         idf = id;
@@ -71,17 +70,25 @@ public class AppelFonction extends Expression{
     @Override
     public String toMIPS() {
         StringBuilder sb = new StringBuilder();
-        sb.append("    #Appel de fonction\n");
+        sb.append("    #gestion parametres \n");
         sb.append("    add $sp, $sp,-"+this.nbParam*4+"\n");
+
         for(int i = 0; i < nbParam; i++){
-            Expression param = realParam.get(i);
-            mips += param.toMIPS() + "sw $v0, " + i*4 + "($sp)\n" ;
+            Expression param = this.param.get(i);
+            sb.append(param.toMIPS() + "sw $v0, " + i*4 + "($sp)\n");
         }
 
+        sb.append("#Appel de fonction\n");
+        sb.append("#Allocation de la valeur retour\n");
+        sb.append("add $sp, $sp, -4\n\n");
+        sb.append("#Jump" + idf + "\n");
+        sb.append("jal " + label + "\n\n");
+        sb.append("#Depile dans $v0\n" );
+        sb.append("add $sp, $sp, 4\n");
+        sb.append("lw $v0, 0($sp)\n\n");
+        sb.append("#Dépiler les params\n");
+        sb.append("add $sp, $sp, " + nbParam *4 + "\n\n");
 
-        sb.append("    jal "+label+"\n");
-        sb.append("    add $sp, $sp, 4\n");
-        sb.append("    lw $v0, 0($sp)\n");
         return sb.toString();
     }
 }

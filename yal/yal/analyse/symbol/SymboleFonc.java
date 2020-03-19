@@ -19,6 +19,13 @@ public class SymboleFonc extends Symbole {
         this.dep = 0;
     }
 
+    public SymboleFonc( ArrayList<String> types) {
+        super();
+        this.dep = 0;
+        label = "fonc"+ FabriqueNumero.getInstance().getNumero();
+        this.paramType = types;
+    }
+
     /**
      *
      * @return
@@ -51,7 +58,7 @@ public class SymboleFonc extends Symbole {
      * @return
      */
     public String getLabel(){
-        return label;
+        return this.label;
     }
 
     /**
@@ -59,6 +66,6 @@ public class SymboleFonc extends Symbole {
      * @return
      */
     public ArrayList<String> getParamType() {
-        return paramType;
+        return this.paramType;
     }
 }
