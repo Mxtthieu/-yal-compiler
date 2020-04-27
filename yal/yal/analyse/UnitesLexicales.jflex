@@ -83,6 +83,8 @@ commentaire = [/][/].*
 
 "("                    { return symbol(CodesLexicaux.PAROUVR); }
 ")"                    { return symbol(CodesLexicaux.PARFER); }
+"["                    { return symbol(CodesLexicaux.CROUVR); }
+"]"                    { return symbol(CodesLexicaux.CROFER); }
 
 {csteE}      	       { return symbol(CodesLexicaux.CSTENTIERE, yytext()); }
 {commentaire}          { }
