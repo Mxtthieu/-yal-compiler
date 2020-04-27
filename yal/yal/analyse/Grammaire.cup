@@ -67,10 +67,10 @@ parser code {:
    
 /* Terminals (tokens returned by the scanner).  */
 
-terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, POINT, ECRIRE, EGAL, LIRE, FONCTION, RETOUR, VIRGULE, LONGUEUR ;
-terminal Symbol    SI, ALORS, SINON, FINSI, TANTQUE, REPETER, FINTANTQUE ;
-terminal Symbol    PLUS, MOINS, MULTIPLICATION, DIVISION, PAROUVR, PARFER ;
-terminal Symbol    EGALITE, DIFFERENT, INFERIEUR, SUPERIEUR, ET, OU, NON ;
+terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, POINT, ECRIRE, EGAL, LIRE, FONCTION, RETOUR, VIRGULE, LONGUEUR;
+terminal Symbol    SI, ALORS, SINON, FINSI, TANTQUE, REPETER, FINTANTQUE;
+terminal Symbol    PLUS, MOINS, MULTIPLICATION, DIVISION, PAROUVR, PARFER, CROUVR, CROFER;
+terminal Symbol    EGALITE, DIFFERENT, INFERIEUR, SUPERIEUR, ET, OU, NON;
 terminal String    IDF, CSTENTIERE, TYPE ;
 
    
@@ -167,10 +167,18 @@ DECL_VAR ::=    TYPE:t IDF:i POINTVIRGULE
                 {: EntreeVar e = new EntreeVar(i);
                    Symbole s = new SymboleEntier();
                    TDS.getInstance().ajouter(e, s, ileft) ; :}
+        |
+                TYPE:t CROUVR EXP:ex CROFER IDF:i POINTVIRGULE
+                {: EntreeVar e = new EntreeVar(i);
+                   SymboleTableau s = new SymboleTableau();
+                   TDS.getInstance().ajouteur(e, s, ileft); :}
                 ;
                    
 AFFECTATION ::= IDF:i EGAL EXP:e POINTVIRGULE
                 {: RESULT = new Affectation(i, e) ; :}
+            |
+                IDF:i CROUVR EXP:ie CROFER EGAL EXP:e POINTVIRGULE
+                {: RESULT = new AffectTab(i, ie, e) ; :}
                 ;
 
 BOUCLE ::= TANTQUE EXP:e REPETER LINST:li FINTANTQUE
@@ -252,6 +260,9 @@ EXP    ::=     CSTENTIERE:c
         |
                 IDF:i PAROUVR PAR_EFF:pe PARFER
                 {: RESULT = new AppelFonction(i, ileft + 1, pe); :}
+        |
+                IDF:i CROUVR EXP:e CROFER
+                {: RESULT = new VariableTableau(i, e, ileft+1) ; :}
                ;
 
 DECL_FONCTION ::= START_FONCTION IDF:i PARAMETRES:p DEBUT LINST:li FIN

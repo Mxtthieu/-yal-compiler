@@ -1,7 +1,13 @@
 package yal.analyse.symbol;
 
+import yal.analyse.TDS;
+
 public class SymboleTableau extends Symbole {
 
+    public SymboleTableau() {
+        super();
+        dep = -TDS.getInstance().tailleTableParam();
+    }
     /**
      *
      * @return
