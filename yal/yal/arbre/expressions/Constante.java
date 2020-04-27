@@ -46,5 +46,10 @@ public abstract class Constante extends Expression {
             sb.append("    li $v0, "+  val() +"\n");
             return sb.toString();
     }
+
+    @Override
+    public boolean isConstante(){
+        return true;
+    }
     
 }
