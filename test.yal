@@ -1,27 +1,16 @@
-programme oklm
+// Faux sémantiquement (exécution).
+
+programme prog
 debut
 
-entier a;
-entier c;
-entier b;
+  fonction a():
+  debut
+    entier [3] a;
+    entier [2] b;
 
-fonction test(entier x, entier b, entier h) debut
-	retourne x + b + h;
-fin
+    a = b;
+    retourne 1;
+  fin
 
-fonction oklm() debut
-    retourne a + c;
-fin
-
-a = 1;
-c = 2;
-b = test(a, c, 2);
-ecrire test(6, 2, 0);
-ecrire b;
-ecrire oklm();
-
-// Affichage final :
-// 8
-// 5
-// 3
+  ecrire a();
 fin

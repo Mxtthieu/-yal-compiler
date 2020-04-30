@@ -14,7 +14,7 @@ public class SymboleTableau extends Symbole {
      */
     @Override
     public boolean isVar() {
-        return false;
+        return true;
     }
 
     /**
@@ -24,5 +24,10 @@ public class SymboleTableau extends Symbole {
     @Override
     public boolean isParam() {
         return false;
+    }
+
+    @Override
+    public String getType(){
+        return "tab";
     }
 }

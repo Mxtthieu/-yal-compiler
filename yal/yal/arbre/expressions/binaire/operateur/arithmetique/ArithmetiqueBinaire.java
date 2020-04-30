@@ -52,4 +52,9 @@ public class ArithmetiqueBinaire extends Binaire {
     public String getType(){
         return "entier";
     }
+
+    @Override
+    public boolean isConstante() {
+        return false;
+    }
 }

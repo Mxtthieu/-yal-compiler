@@ -10,6 +10,7 @@ public class Condition extends Instruction{
     private Expression exp;
     private BlocDInstructions ctrue;
     private BlocDInstructions cfalse;
+    private boolean bool;
 
     /**
      *
@@ -20,6 +21,7 @@ public class Condition extends Instruction{
         exp = e;
         ctrue = new BlocDInstructions(noLigne +1);
         cfalse = new BlocDInstructions(noLigne +1);
+        this.bool = false;
 
     }
 
@@ -35,9 +37,11 @@ public class Condition extends Instruction{
         if (typeBloc == 0) {
             ctrue = b;
             cfalse = new BlocDInstructions(noLigne + 1);
+            this.bool = false;
         } else {
             cfalse = b;
             ctrue = new BlocDInstructions(noLigne + 1);
+            this.bool =true;
         }
     }
 
@@ -52,6 +56,7 @@ public class Condition extends Instruction{
         exp = e;
         ctrue = b;
         cfalse = b2;
+        this.bool = true;
     }
 
     /**
@@ -82,11 +87,20 @@ public class Condition extends Instruction{
         sb.append(exp.toMIPS());
         sb.append("    beqz $v0, sinon"+ compteur +"\n");
         sb.append("alors"+ compteur +" :\n");
-        sb.append(cfalse.toMIPS());
+        sb.append(ctrue.toMIPS());
         sb.append("j finsi"+ compteur +" \n");
         sb.append("sinon"+ compteur +" :\n");
-        sb.append(ctrue.toMIPS());
+        sb.append(cfalse.toMIPS());
         sb.append("finsi"+ compteur + ":\n");
         return sb.toString();
+    }
+
+
+    public boolean isReturn() {
+        boolean res = false;
+        if(this.bool) {
+            res = cfalse.isRetourne();
+        }
+        return res && ctrue.isRetourne();
     }
 }

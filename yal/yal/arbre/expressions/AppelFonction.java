@@ -43,6 +43,11 @@ public class AppelFonction extends Expression{
         return type;
     }
 
+    @Override
+    public boolean isConstante() {
+        return false;
+    }
+
     /**
      *
      */

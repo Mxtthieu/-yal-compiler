@@ -58,6 +58,6 @@ public abstract class Entree {
      */
     @Override
     public int hashCode(){
-        return Objects.hash(idf);
+        return Objects.hash(idf,nbParam);
     }
 }

@@ -46,4 +46,9 @@ public class Comparaison extends Binaire {
     public String getType() {
         return "bool";
     }
+
+    @Override
+    public boolean isConstante() {
+        return false;
+    }
 }

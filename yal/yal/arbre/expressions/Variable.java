@@ -14,7 +14,6 @@ public class Variable extends Expression {
     private String type;
     private int dep;
     private int idRegion;
-    private int num;
 
     /**
      *
@@ -24,7 +23,6 @@ public class Variable extends Expression {
     public Variable(String s, int n) {
         super(n);
         idf = s;
-        num = FabriqueNumero.getInstance().getNumero();
     }
 
     /**
@@ -49,6 +47,7 @@ public class Variable extends Expression {
      */
     @Override
     public String toMIPS() {
+        int num = FabriqueNumero.getInstance().getNumero();
         StringBuilder cst = new StringBuilder();
         cst.append("#On recupere la base\n");
         cst.append("move $t5, $s7\n");
@@ -94,5 +93,10 @@ public class Variable extends Expression {
     @Override
     public String getType() {
         return type;
+    }
+
+    @Override
+    public boolean isConstante() {
+        return false;
     }
 }

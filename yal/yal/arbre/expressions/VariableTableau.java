@@ -89,4 +89,9 @@ public class VariableTableau extends Expression {
     public String getType() {
         return "entier";
     }
+
+    @Override
+    public boolean isConstante() {
+        return false;
+    }
 }

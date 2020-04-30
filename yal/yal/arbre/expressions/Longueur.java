@@ -31,6 +31,11 @@ public class Longueur extends Expression {
         return "entier";
     }
 
+    @Override
+    public boolean isConstante() {
+        return true;
+    }
+
     /**
      *
      */

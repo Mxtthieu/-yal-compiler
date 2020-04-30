@@ -171,14 +171,14 @@ DECL_VAR ::=    TYPE:t IDF:i POINTVIRGULE
                 TYPE:t CROUVR EXP:ex CROFER IDF:i POINTVIRGULE
                 {: EntreeVar e = new EntreeVar(i);
                    SymboleTableau s = new SymboleTableau();
-                   TDS.getInstance().ajouteur(e, s, ileft); :}
+                   TDS.getInstance().ajouter(e, s, ileft); :}
                 ;
                    
 AFFECTATION ::= IDF:i EGAL EXP:e POINTVIRGULE
                 {: RESULT = new Affectation(i, e) ; :}
             |
                 IDF:i CROUVR EXP:ie CROFER EGAL EXP:e POINTVIRGULE
-                {: RESULT = new AffectTab(i, ie, e) ; :}
+                {: RESULT = new AffectationTableau(i, ie, e) ; :}
                 ;
 
 BOUCLE ::= TANTQUE EXP:e REPETER LINST:li FINTANTQUE

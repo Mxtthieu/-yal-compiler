@@ -58,7 +58,7 @@ public class Lire extends Instruction{
         sb.append("    #Si les numéros correspondent : fini\n");
         sb.append("    beqz $v0, fintantquelire"+compteur+"\n");
         sb.append("    #Sinon on remonte aux regions precedentes\n");
-        sb.append("    lw $t5, 8($t2) \n");
+        sb.append("    lw $t5, 8($t5) \n");
         sb.append("    j tantquelire"+compteur+"\n");
         sb.append("fintantquelire"+compteur+" :\n\n");
         sb.append("    #Valeur lu\n");

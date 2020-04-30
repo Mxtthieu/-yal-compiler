@@ -50,4 +50,9 @@ public class NonLogique extends Unaire{
     public String getType() {
         return "bool";
     }
+
+    @Override
+    public boolean isConstante() {
+        return false;
+    }
 }

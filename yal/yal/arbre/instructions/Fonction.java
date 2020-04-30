@@ -38,7 +38,7 @@ public class Fonction extends Instruction {
         bloc2 = b2;
         this.nbParam = nbParam;
         idBloc = TDS.getInstance().getIdRegion();
-        memoryVar = TDS.getInstance().sizeMemoryVar();
+        memoryVar = TDS.getInstance().TailleZoneVariable();
     }
     /**
      *
@@ -103,6 +103,9 @@ public class Fonction extends Instruction {
         }
         label = s.getLabel();
         TDS.getInstance().debutDeBloc();
+        if(bloc2 != null){
+            bloc2.verifier();
+        }
         bloc.verifier();
 
         if (!isRetourner()) {

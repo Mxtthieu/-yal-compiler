@@ -51,7 +51,8 @@ public class Retourner extends Instruction {
         sb.append(exp.toMIPS() + "\n");
         if(idRegion > 0){
             sb.append("    #Deplacement dans la base\n");
-            sb.append("    lw $7, 8($sp)\n");
+            sb.append("    move $sp, $s7\n" );
+            sb.append("    lw $s7, 8($sp)\n");
             sb.append("    #Depile l'id de la region\n");
             sb.append("    add $sp, $sp, 4\n\n");
             sb.append("    #Depile la chaine dynamique \n");

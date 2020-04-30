@@ -14,7 +14,6 @@ public class Affectation extends Instruction{
     private Expression exp;
     private int dep;
     private int idRegion;
-    private int id;
 
     /**
      *
@@ -25,7 +24,6 @@ public class Affectation extends Instruction{
         super(e.getNoLigne());
         idf = s;
         exp = e;
-        this.id = FabriqueNumero.getInstance().getNumero();
     }
 
     /**
@@ -50,6 +48,7 @@ public class Affectation extends Instruction{
      */
     @Override
     public String toMIPS() {
+        int compteur = FabriqueNumero.getInstance().getNumero();
         StringBuilder sb = new StringBuilder();
         sb.append("    #Affectation de "+ exp.toString() + " à "+ idf + "\n");
         sb.append(exp.toMIPS());
@@ -63,21 +62,21 @@ public class Affectation extends Instruction{
         sb.append("    #on recupere le numéro de région\n");
         sb.append("    li $v1, " + idRegion + "\n");
 
-        sb.append("tantqueaffect_" + this.id + " :\n");
+        sb.append("tantqueaffect_" + compteur + " :\n");
 
         sb.append("    #on recupere le numéro de région courant\n");
         sb.append("    lw $v0, 4($t5) \n");
         sb.append("    sub $v0, $v0, $v1\n");
 
         sb.append("    #on va a la fin si les numéros correspondent\n");
-        sb.append("    beqz $v0, fintantqueaffect_" + this.id + "\n");
+        sb.append("    beqz $v0, fintantqueaffect_" + compteur + "\n");
 
         sb.append("    #on essaye avec le numéro de région précédent sinon\n");
         sb.append("    lw $t5, 8($t5) \n");
-        sb.append("    j tantqueaffect_" + this.id + "\n" );
+        sb.append("    j tantqueaffect_" + compteur + "\n" );
 
         sb.append("    #sortie du tantque\n");
-        sb.append("fintantqueaffect_" + this.id + " :\n\n");
+        sb.append("fintantqueaffect_" + compteur + " :\n\n");
 
         sb.append("    #on dépile la valeur qu'on veut mettre dans la variable\n");
         sb.append("    add $sp, $sp, 4\n");

@@ -9,8 +9,6 @@ import java.util.HashMap;
 public class TDS {
 
     private static final TDS instance = new TDS();
-    private HashMap<Entree, Symbole> tab;
-    private int ligne;
     private int idRegion;
     private int idBox;
     private Bloc main;
@@ -21,7 +19,6 @@ public class TDS {
      *
      */
     private TDS(){
-        tab = new HashMap<>();
         idRegion = -1;
         idBox = -1;
         main = null;
@@ -122,14 +119,6 @@ public class TDS {
         Bloc b = cur.getBlocPrecedent();
         cur = b;
         idBox--;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int sizeMemoryVar(){
-        return -tab.size() * 4;
     }
 
     /**

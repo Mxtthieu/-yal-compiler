@@ -60,4 +60,9 @@ public class Logique extends Binaire {
     public String getType() {
         return "bool";
     }
+
+    @Override
+    public boolean isConstante() {
+        return false;
+    }
 }
