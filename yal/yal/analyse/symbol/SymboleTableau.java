@@ -3,10 +3,12 @@ package yal.analyse.symbol;
 import yal.analyse.TDS;
 
 public class SymboleTableau extends Symbole {
+    private int longeur;
 
     public SymboleTableau() {
         super();
         dep = -TDS.getInstance().tailleTableParam();
+        this.longeur = 0;
     }
     /**
      *
@@ -29,5 +31,13 @@ public class SymboleTableau extends Symbole {
     @Override
     public String getType(){
         return "tab";
+    }
+
+    public int getLongeur() {
+        return longeur;
+    }
+
+    public void setLongeur(int longeur) {
+        this.longeur = longeur;
     }
 }

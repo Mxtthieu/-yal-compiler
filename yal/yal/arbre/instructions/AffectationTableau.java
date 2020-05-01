@@ -3,6 +3,7 @@ package yal.arbre.instructions;
 import yal.analyse.TDS;
 import yal.analyse.entre.EntreeVar;
 import yal.analyse.symbol.Symbole;
+import yal.analyse.symbol.SymboleTableau;
 import yal.arbre.FabriqueNumero;
 import yal.arbre.expressions.Expression;
 import yal.exceptions.AnalyseSemantiqueException;

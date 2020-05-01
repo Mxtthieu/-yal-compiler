@@ -12,12 +12,28 @@ public class Main extends ArbreAbstrait {
             "sautLigne: .asciiz \"\\n\"\n" +
             "vrai :     .asciiz \"vrai\"\n" +
             "faux :     .asciiz \"faux\"\n" +
-            "errdiv :   .asciiz \"Erreur : Division par zero\"\n";
+            "errdiv :   .asciiz \"Erreur : Division par zero\"\n"+
+            "longueurTabInvalide :\n" +
+            "              .asciiz \"decl de tab avec longueur nulle ou negative\"\n" +
+            "accesTabInvalide : \n" +
+            "              .asciiz \"acces a un tableau avec indice invalide (pas dans les bornes)\"\n\n";
     protected static String debut = "\n.text\n"+
             "\nmain :\n";
     protected static String fin = "end :\n"+
             "    li $v0, 10\n" +
-            "    syscall\n";
+            "    syscall\n"+
+            "    erreurLongueurTab :\n" +
+            "    li $v0, 4\n" +
+            "    la $a0, longueurTabInvalide\n" +
+            "    syscall\n" +
+            "    j end\n\n" +
+
+            "    erreurAccesTab :\n" +
+            "    li $v0, 4\n" +
+            "    la $a0, accesTabInvalide\n" +
+            "    syscall\n" +
+            "    j end\n\n" ;
+
     private int taille;
     private BlocDInstructions inst;
     private BlocDInstructions fcts;

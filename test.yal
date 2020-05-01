@@ -1,16 +1,15 @@
-// Faux sémantiquement (exécution).
+// Affiche six 0.
 
 programme prog
 debut
 
-  fonction a():
-  debut
-    entier [3] a;
-    entier [2] b;
+  entier [6] a;
 
-    a = b;
-    retourne 1;
-  fin
+  ecrire a[0];
+  ecrire a[1];
+  ecrire a[2];
+  ecrire a[3];
+  ecrire a[4];
+  ecrire a[5];
 
-  ecrire a();
 fin
