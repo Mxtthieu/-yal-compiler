@@ -63,6 +63,8 @@ commentaire = [/][/].*
 "fonction"             { return symbol(CodesLexicaux.FONCTION); }
 "retourne"             { return symbol(CodesLexicaux.RETOUR); }
 
+"longueur"             { return symbol(CodesLexicaux.LONGUEUR); }
+
 "="                    { return symbol(CodesLexicaux.EGAL); }
 "+"                    { return symbol(CodesLexicaux.PLUS); }
 "-"                    { return symbol(CodesLexicaux.MOINS); }
@@ -74,6 +76,7 @@ commentaire = [/][/].*
 ">"                    { return symbol(CodesLexicaux.SUPERIEUR); }
 "!="                   { return symbol(CodesLexicaux.DIFFERENT); }
 
+"."                    { return symbol(CodesLexicaux.POINT); }
 ";"                    { return symbol(CodesLexicaux.POINTVIRGULE); }
 ","                    { return symbol(CodesLexicaux.VIRGULE); }
 
