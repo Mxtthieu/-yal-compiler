@@ -17,6 +17,7 @@ public class VariableTableau extends Expression {
         super(n);
         this.idf = nidf;
         this.indice = indice;
+        System.out.println(indice);
         this.cpt = FabriqueNumero.getInstance().getNumero();
     }
 
@@ -70,6 +71,9 @@ public class VariableTableau extends Expression {
         sb.append(indice.toMIPS());
         sb.append("    #Gestion de l'erreur d'indice\n");
         sb.append("    bltz $v0, erreurAccesTab\n");
+        //sb.append("    lw $t5, 0($t4)\n");
+        //sb.append("    sub $t5, $t5, $v0\n");
+        //sb.append("    blez $t5, erreurAccesTab\n");
         sb.append("    li $t3, -4\n");
         sb.append("    mult $v0, $t3\n");
         sb.append("    mflo $t2\n");

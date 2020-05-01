@@ -23,6 +23,8 @@ public class Comparaison extends Binaire {
     public void verifier()throws AnalyseSemantiqueException{
         super.verifier();
         StringBuilder sb = new StringBuilder();
+        System.out.println(gauche.getType() +" : "+droite.getType());
+        System.out.println(gauche +" : "+ droite);
         if (!gauche.getType().equals(droite.getType())){
             sb.append("Erreur de type : Les opérandes ne sont pas de même type ");
             throw new AnalyseSemantiqueException(getNoLigne(),sb.toString());

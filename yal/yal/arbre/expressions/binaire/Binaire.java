@@ -23,8 +23,8 @@ public abstract class Binaire extends Expression {
      */
     @Override
     public void verifier() {
-        gauche.verifier();
         droite.verifier();
+        gauche.verifier();
     }
 
     /**

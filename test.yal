@@ -1,15 +1,7 @@
-// Affiche six 0.
-
-programme prog
+programme idf
 debut
 
-  entier [6] a;
-
-  ecrire a[0];
-  ecrire a[1];
-  ecrire a[2];
-  ecrire a[3];
-  ecrire a[4];
-  ecrire a[5];
+entier[3]a;
+a[0] = 1;
 
 fin
