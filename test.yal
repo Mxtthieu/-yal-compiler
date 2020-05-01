@@ -1,7 +1,44 @@
-programme idf
-debut
-
-entier[3]a;
-a[0] = 1;
-
+programme Test31 debut
+    entier[10] tab;
+    entier trash;
+    fonction tri() debut
+        entier i;
+        entier j;
+        entier tmp;
+        i = 1;
+        tantque i < tab.longueur repeter
+            j = 0;
+            tantque j < tab.longueur - i repeter
+                si tab[j + 1] < tab[j] alors
+                    tmp = tab[j + 1];
+                    tab[j + 1] = tab[j];
+                    tab[j] = tmp;
+                finsi
+                j = j + 1;
+            fintantque
+            i = i + 1;
+        fintantque
+        retourne 0;
+    fin
+    fonction affichage() debut
+        entier cpt;
+        tantque cpt < tab.longueur repeter
+            ecrire tab[cpt];
+            cpt = cpt + 1;
+        fintantque
+        retourne 0;
+    fin
+    tab[0] = 1;
+    tab[1] = 48;
+    tab[2] = 73;
+    tab[3] = 12;
+    tab[4] = 90;
+    tab[5] = 5;
+    tab[6] = 2345;
+    tab[7] = 3;
+    tab[8] = 5;
+    tab[9] = 2;
+    trash = affichage();
+    trash = tri();
+    trash = affichage();
 fin
