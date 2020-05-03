@@ -62,7 +62,7 @@ public class VariableTableau extends Expression {
         sb.append("    #Si les numeros sont identiques : fin\n");
         //sb.append("    beqz $v0, fintantquevariabletableau_" + cpt + "\n");
         sb.append("    beq $v0, $v1, fintantquevariabletableau_" + cpt + "\n");
-        sb.append("    #Sinon on refait le meme test avec la region precedente\n");
+        sb.append("    #test avec la region precedente\n");
         sb.append("    lw $t5, 8($t5) \n");
         sb.append("    j tantquevariabletableau_" + cpt + "\n");
         sb.append("fintantquevariabletableau_" + cpt + " :\n\n");

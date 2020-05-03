@@ -7,7 +7,7 @@ import yal.arbre.FabriqueNumero;
 import yal.arbre.expressions.Expression;
 import yal.exceptions.AnalyseSemantiqueException;
 
-public class DeclarationTableau extends Instruction{
+public class Tableau extends Instruction{
 
     private String idf;
     private Expression size;
@@ -16,7 +16,7 @@ public class DeclarationTableau extends Instruction{
 
 
 
-    public DeclarationTableau(String nidf, Expression e) {
+    public Tableau(String nidf, Expression e) {
         super(e.getNoLigne());
         this.idf = nidf;
         this.size = e;
