@@ -53,7 +53,6 @@ public class Variable extends Expression {
         cst.append("    move $t5, $s7\n");
         cst.append("    #Numéro de région de la variable\n");
         cst.append("    li $v1, " + idRegion + "\n");
-        cst.append("    #début du tantque\n");
         cst.append("tantquevariable_" + num + " :\n");
         cst.append("    #on prend le numéro de région courant\n");
         cst.append("    lw $v0, 4($t5)\n");

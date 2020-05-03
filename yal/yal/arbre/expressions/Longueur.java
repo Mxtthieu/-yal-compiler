@@ -67,7 +67,7 @@ public class Longueur extends Expression {
     public String toMIPS() {
         int compteur = FabriqueNumero.getInstance().getNumero();
         StringBuilder mips = new StringBuilder();
-        mips.append("    #Recuperation de la base\n");
+        mips.append("    #On recupere la base\n");
         mips.append("    move $t5, $s7\n");
         mips.append("    #Numéro de région du tableau\n");
         mips.append("    li $v1, " + idRegion + "\n");
@@ -84,7 +84,7 @@ public class Longueur extends Expression {
         mips.append("fintantquelongueur_" + compteur + " :\n\n");
         mips.append("    #L'adresse du tableau dans $t4\n");
         mips.append("    lw $t4, " + dep + "($t5)\n");
-        mips.append("    #Chargement de la longueur dans v0\n");
+        mips.append("    #on met la valeur de la longueur dans v0\n");
         mips.append("    lw $v0, 0($t4)\n");
         return mips.toString();
 

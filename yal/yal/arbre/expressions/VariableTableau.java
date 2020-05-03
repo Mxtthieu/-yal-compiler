@@ -69,7 +69,7 @@ public class VariableTableau extends Expression {
         sb.append("    #Adresse du tableau\n");
         sb.append("    lw $t4, " + dep + "($t5)\n");
         sb.append(indice.toMIPS());
-        sb.append("    #Gestion de l'erreur d'indice\n");
+        sb.append("    #erreur d'indice\n");
         sb.append("    bltz $v0, erreurAccesTab\n");
         //sb.append("    lw $t5, 0($t4)\n");
         //sb.append("    sub $t5, $t5, $v0\n");

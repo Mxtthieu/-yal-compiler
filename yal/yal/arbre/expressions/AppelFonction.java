@@ -84,14 +84,14 @@ public class AppelFonction extends Expression{
         }
 
         sb.append("    #Appel de fonction\n");
-        sb.append("    #Allocation de la valeur retour\n");
+        sb.append("    #On alloue la valeur de retour\n");
         sb.append("    add $sp, $sp, -4\n\n");
         sb.append("    #Jump" + idf + "\n");
         sb.append("    jal " + label + "\n\n");
-        sb.append("    #Depile dans $v0\n" );
+        sb.append("    #on depile dans $v0\n" );
         sb.append("    add $sp, $sp, 4\n");
         sb.append("    lw $v0, 0($sp)\n\n");
-        sb.append("    #Dépiler les params\n");
+        sb.append("    #on depile les params\n");
         sb.append("    add $sp, $sp, " + nbParam *4 + "\n\n");
 
         return sb.toString();
