@@ -17,12 +17,11 @@ public class VariableTableau extends Expression {
         super(n);
         this.idf = nidf;
         this.indice = indice;
-        System.out.println(indice);
         this.cpt = FabriqueNumero.getInstance().getNumero();
     }
 
 
-    public String getIdf() {
+    public String toString() {
         return idf;
     }
 
@@ -35,14 +34,14 @@ public class VariableTableau extends Expression {
         indice.verifier();
 
         if(!(indice.getType().equals("entier"))) {
-            throw new AnalyseSemantiqueException(getNoLigne(), "erreur type :\t indice " + idf + " \n\t" + indice + " n'est pas entier");
+            throw new AnalyseSemantiqueException(getNoLigne(), "L'indice " + idf + "n'est pas de type entier");
         }
 
         EntreeVar e = new EntreeVar(idf);
         Symbole s = TDS.getInstance().identifier(e);
 
         if(s == null){
-            throw new AnalyseSemantiqueException(getNoLigne(), " " + idf +  "n'a pas été déclarée ");
+            throw new AnalyseSemantiqueException(getNoLigne(), "La variable : " + idf +  "n'a pas été déclarée ");
         }
 
         dep = s.getDep();
@@ -59,9 +58,10 @@ public class VariableTableau extends Expression {
         sb.append("tantquevariabletableau_" + cpt + " :\n");
         sb.append("    #Recuperation du numero de region\n");
         sb.append("    lw $v0, 4($t5)\n");
-        sb.append("    sub $v0, $v0, $v1\n");
+        //sb.append("    sub $v0, $v0, $v1\n");
         sb.append("    #Si les numeros sont identiques : fin\n");
-        sb.append("    beqz $v0, fintantquevariabletableau_" + cpt + "\n");
+        //sb.append("    beqz $v0, fintantquevariabletableau_" + cpt + "\n");
+        sb.append("    beq $v0, $v1, fintantquevariabletableau_" + cpt + "\n");
         sb.append("    #Sinon on refait le meme test avec la region precedente\n");
         sb.append("    lw $t5, 8($t5) \n");
         sb.append("    j tantquevariabletableau_" + cpt + "\n");

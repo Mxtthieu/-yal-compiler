@@ -288,7 +288,7 @@ PARAMETRES ::=  PAROUVR PARFER
                {: RESULT = p; :}
                ;
 
-NB_PARAM   ::=  PARAM VIRGULE NB_PARAM:p
+NB_PARAM   ::=  PARAM POINTVIRGULE NB_PARAM:p
                 {: RESULT = p + 1; :}
            |
                 PARAM

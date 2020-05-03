@@ -21,13 +21,10 @@ public class Bloc {
      * @param idRegion
      */
     public Bloc(int idRegion) {
-
         this.idRegion = idRegion;
         blocPrecedent = null;
-
         blocSuivant = new HashMap<>();
         tab = new HashMap<>();
-
     }
 
     /**
@@ -36,13 +33,10 @@ public class Bloc {
      * @param b
      */
     public Bloc(int idRegion, Bloc b) {
-
         this.idRegion = idRegion;
         blocPrecedent = b;
-
         blocSuivant = new HashMap<>();
         tab = new HashMap<>();
-
     }
 
     /**
@@ -73,7 +67,6 @@ public class Bloc {
                 tmp = blocPrecedent.identifier(e);
             }
         }
-
         return tmp;
     }
 
@@ -82,9 +75,7 @@ public class Bloc {
      * @param s
      */
     public void ajouterSuivant(Bloc s) {
-
         Bloc b = blocSuivant.put(s.getIdRegion(), s);
-
     }
 
     /**
@@ -94,7 +85,6 @@ public class Bloc {
      */
     public Bloc recupSuivant(int idRegion) {
         return blocSuivant.get(idRegion);
-
     }
 
     /**

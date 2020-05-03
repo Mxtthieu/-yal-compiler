@@ -14,12 +14,12 @@ public class Longueur extends Expression {
 
     /**
      *
-     * @param nidf
+     * @param idf
      * @param n
      */
-    public Longueur(String nidf, int n) {
+    public Longueur(String idf, int n) {
         super(n);
-        this.idf = nidf;
+        this.idf = idf;
     }
 
     /**
@@ -46,15 +46,13 @@ public class Longueur extends Expression {
 
         if(s == null){
             StringBuilder sb = new StringBuilder();
-            sb.append(" " + idf);
-            sb.append("n'est pas déclaré");
+            sb.append("La variable " + idf + "n'a pas etait declarer'");
             throw new AnalyseSemantiqueException(getNoLigne(), sb.toString());
         }
 
         if(!(s.getType().equals("tab"))) {
             StringBuilder sb = new StringBuilder();
-            sb.append(idf + ".longueur\n\t ");
-            sb.append(idf + " n'est pas un tableau");
+            sb.append("La variable " + idf + " n'est pas un tableau");
             throw new AnalyseSemantiqueException(getNoLigne(), sb.toString());
         }
         dep = s.getDep();
@@ -69,18 +67,17 @@ public class Longueur extends Expression {
     public String toMIPS() {
         int compteur = FabriqueNumero.getInstance().getNumero();
         StringBuilder mips = new StringBuilder();
-        mips.append("    #Longueur du tableau dans v0\n");
         mips.append("    #Recuperation de la base\n");
         mips.append("    move $t5, $s7\n");
-        mips.append("    #Recuperation du numéro de région du tableau\n");
+        mips.append("    #Numéro de région du tableau\n");
         mips.append("    li $v1, " + idRegion + "\n");
-        mips.append("    #Tantque\n");
         mips.append("tantquelongueur_" + compteur + " :\n");
         mips.append("    #Numéro de région actuel\n");
         mips.append("    lw $v0, 4($t5)\n");
-        mips.append("    sub $v0, $v0, $v1\n");
+        //mips.append("    sub $v0, $v0, $v1\n");
         mips.append("    #Si les numéros correspondent : fin\n");
-        mips.append("    beqz $v0, fintantquelongueur_" + compteur + "\n");
+        //mips.append("    beqz $v0, fintantquelongueur_" + compteur + "\n");
+        mips.append("    beq $v0, $v1, fintantquelongueur_" + compteur + "\n");
         mips.append("    #Sinon on essaye avec le numéro de région précédent\n");
         mips.append("    lw $t5, 8($t5) \n");
         mips.append("    j tantquelongueur_" + compteur + "\n");

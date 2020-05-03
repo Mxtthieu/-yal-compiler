@@ -11,7 +11,7 @@ public abstract class Symbole {
      *
      */
     public Symbole(){
-        dep = TDS.getInstance().TailleZoneVariable();
+        //dep = TDS.getInstance().TailleZoneVariable();
         idRegion = TDS.getInstance().getIdRegion();
         idBox = TDS.getInstance().getIdBox();
     }

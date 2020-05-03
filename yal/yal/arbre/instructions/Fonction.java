@@ -69,7 +69,7 @@ public class Fonction extends Instruction {
         sb.append("    #Deplacement de la base\n");
         sb.append("    move $s7, $sp\n" + "\n");
         sb.append("    #Allocation des variables \n");
-        sb.append("    add $sp, $sp , -" + this.memoryVar+ "\n");
+        sb.append("    add $sp, $sp , " + this.memoryVar+ "\n");
         sb.append("    # initialisation de toutes les variables a 0\n") ;
 
         for(int dep = 0; dep < this.memoryVar; dep += 4) {

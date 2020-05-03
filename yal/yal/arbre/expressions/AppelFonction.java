@@ -57,8 +57,8 @@ public class AppelFonction extends Expression{
         SymboleFonc s = (SymboleFonc) TDS.getInstance().identifier(e);
         if (s == null) {
             StringBuilder sb = new StringBuilder();
-            sb.append("Pas de déclaration de : ");
-            sb.append(idf + "()");
+            sb.append("fonction : ");
+            sb.append(idf + "() non declarer");
             throw new AnalyseSemantiqueException(getNoLigne(), sb.toString());
         }
         label = s.getLabel();

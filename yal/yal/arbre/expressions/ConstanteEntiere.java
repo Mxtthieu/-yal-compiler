@@ -4,11 +4,11 @@ public class ConstanteEntiere extends Constante {
 
     /**
      *
-     * @param texte
+     * @param idf
      * @param n
      */
-    public ConstanteEntiere(String texte, int n) {
-        super(texte, n);
+    public ConstanteEntiere(String idf, int n) {
+        super(idf, n);
     }
 
     /**
