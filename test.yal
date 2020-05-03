@@ -7,10 +7,6 @@ fonction surcharge() debut
     retourne 1;
 fin
 
-fonction surcharge(entier a) debut
-    retourne a;
-fin
-
 
 fonction surcharge(entier b; entier c) debut
     entier[10] tab2;
